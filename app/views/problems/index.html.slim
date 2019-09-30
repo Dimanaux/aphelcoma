@@ -1,0 +1,31 @@
+p#notice
+  = notice
+h1
+  | Problems
+table
+  thead
+    tr
+      th
+        | Title
+      th
+        | Description
+      th
+        | User
+      th[colspan="3"]
+  tbody
+    - @problems.each do |problem|
+      tr
+        td
+          = problem.title
+        td
+          = problem.description
+        td
+          = problem.user_id
+        td
+          = link_to 'Show', problem
+        td
+          = link_to 'Edit', edit_problem_path(problem)
+        td
+          = link_to 'Destroy', problem, method: :delete, data: { confirm: 'Are you sure?' }
+br
+= link_to 'New Problem', new_problem_path

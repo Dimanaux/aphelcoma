@@ -1,0 +1,21 @@
+= form_with(model: problem, local: true) do |form|
+  - if problem.errors.any?
+    #error_explanation
+      h2
+        = pluralize(problem.errors.count, "error")
+        |  prohibited this problem from being saved:
+      ul
+        - problem.errors.full_messages.each do |message|
+          li
+            = message
+  .field
+    = form.label :title
+    = form.text_field :title
+  .field
+    = form.label :description
+    = form.text_field :description
+  .field
+    = form.label :user_id
+    = form.text_field :user_id
+  .actions
+    = form.submit

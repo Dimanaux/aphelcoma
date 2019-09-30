@@ -1,0 +1,17 @@
+p#notice
+  = notice
+p
+  strong
+    | Title:
+  = @problem.title
+p
+  strong
+    | Description:
+  = @problem.description
+p
+  strong
+    | User:
+  = @problem.user_id
+= link_to 'Edit', edit_problem_path(@problem)
+|  | 
+= link_to 'Back', problems_path
