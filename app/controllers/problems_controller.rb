@@ -1,5 +1,6 @@
 class ProblemsController < ApplicationController
-  before_action :set_problem, only: [:show, :edit, :update, :destroy]
+  before_action :set_problem, only: %I(show edit update destroy)
+  before_action :authenticate_user!, only: %I(new edit create destroy)
 
   # GET /problems
   # GET /problems.json
@@ -25,6 +26,7 @@ class ProblemsController < ApplicationController
   # POST /problems.json
   def create
     @problem = Problem.new(problem_params)
+    @problem.user = current_user
 
     respond_to do |format|
       if @problem.save
@@ -62,13 +64,13 @@ class ProblemsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_problem
-      @problem = Problem.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_problem
+    @problem = Problem.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def problem_params
-      params.require(:problem).permit(:title, :description, :user_id)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def problem_params
+    params.require(:problem).permit(:title, :description, :user_id)
+  end
 end
