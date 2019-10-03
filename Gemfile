@@ -54,5 +54,7 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise'
+# markdown for problems
+gem 'redcarpet'
 gem 'simple_form'
 gem 'slim'

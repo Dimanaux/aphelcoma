@@ -1,12 +1,13 @@
 p#notice = notice
-
+h1
+  | Problems
 .container
   - @problems.each do |problem|
     .card style="width: 18rem;"
       .card-body
         h5.card-title = problem.title
         h6.card-subtitle.mb-2.text-muted = "by #{problem.user.email}"
-        p.card-text = problem.description
+        p.card-text = markdown(problem.description.lines.first)
         = link_to 'Show', problem, class: 'card-link'
         - if current_user == problem.user
           = link_to 'Edit', edit_problem_path(problem), class: 'card-link'
