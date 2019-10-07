@@ -1,9 +1,10 @@
 p#notice = notice
 h1
   | Problems
-.container
+
+.container.clearfix
   - @problems.each do |problem|
-    .card style="width: 18rem;"
+    .problem.card.float-left
       .card-body
         h5.card-title = problem.title
         h6.card-subtitle.mb-2.text-muted = "by #{problem.user.email}"
