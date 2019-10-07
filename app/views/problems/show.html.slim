@@ -1,12 +1,9 @@
 p#notice
   = notice
-p
-  strong
-    | Title:
+p.small = "Problem no. #{@problem.id}"
+h2
   = @problem.title
 p
-  strong
-    | Description:
   = markdown(@problem.description)
 
 = link_to "Edit", edit_problem_path(@problem)
