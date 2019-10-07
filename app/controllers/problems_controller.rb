@@ -1,6 +1,6 @@
 class ProblemsController < ApplicationController
-  before_action :set_problem, only: %I(show edit update destroy)
-  before_action :authenticate_user!, only: %I(new edit create destroy)
+  before_action :set_problem, only: %I[show edit update destroy]
+  before_action :authenticate_user!, only: %I[new edit create destroy]
 
   # GET /problems
   # GET /problems.json
@@ -10,8 +10,7 @@ class ProblemsController < ApplicationController
 
   # GET /problems/1
   # GET /problems/1.json
-  def show
-  end
+  def show; end
 
   # GET /problems/new
   def new
@@ -19,8 +18,7 @@ class ProblemsController < ApplicationController
   end
 
   # GET /problems/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /problems
   # POST /problems.json
@@ -30,7 +28,7 @@ class ProblemsController < ApplicationController
 
     respond_to do |format|
       if @problem.save
-        format.html { redirect_to @problem, notice: 'Problem was successfully created.' }
+        format.html { redirect_to @problem, notice: "Problem was successfully created." }
         format.json { render :show, status: :created, location: @problem }
       else
         format.html { render :new }
@@ -44,7 +42,7 @@ class ProblemsController < ApplicationController
   def update
     respond_to do |format|
       if @problem.update(problem_params)
-        format.html { redirect_to @problem, notice: 'Problem was successfully updated.' }
+        format.html { redirect_to @problem, notice: "Problem was successfully updated." }
         format.json { render :show, status: :ok, location: @problem }
       else
         format.html { render :edit }
@@ -58,7 +56,7 @@ class ProblemsController < ApplicationController
   def destroy
     @problem.destroy
     respond_to do |format|
-      format.html { redirect_to problems_url, notice: 'Problem was successfully destroyed.' }
+      format.html { redirect_to problems_url, notice: "Problem was successfully destroyed." }
       format.json { head :no_content }
     end
   end
