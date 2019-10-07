@@ -8,10 +8,10 @@ h1
         h5.card-title = problem.title
         h6.card-subtitle.mb-2.text-muted = "by #{problem.user.email}"
         p.card-text = markdown(problem.description.lines.first)
-        = link_to 'Show', problem, class: 'card-link'
+        = link_to "Show", problem, class: "card-link"
         - if current_user == problem.user
-          = link_to 'Edit', edit_problem_path(problem), class: 'card-link'
-          = link_to 'Destroy', problem, method: :delete, data: { confirm: 'Are you sure?' }, class: 'card-link'
+          = link_to "Edit", edit_problem_path(problem), class: "card-link"
+          = link_to "Destroy", problem, method: :delete, data: { confirm: "Are you sure?" }, class: "card-link"
 
 br
-= link_to 'New Problem', new_problem_path
+= link_to "New Problem", new_problem_path
