@@ -11,7 +11,9 @@
   .field
     = form.input :title
   .field
-    = form.input :description, as: :text,
-      label: "Description (markdown supported)", input_html: { rows: 10 }
+    = form.input :description,
+                      as: :text,
+                      label: "Description (markdown supported)",
+                      input_html: { rows: 10, class: "text-monospace" }
   .actions
     = form.button :submit, class: "btn btn-primary"
