@@ -7,6 +7,7 @@ gem "rails", "~> 6.0.0"
 
 # main
 gem "devise"
+gem "kaminari"
 
 # views
 gem "redcarpet"

@@ -3,7 +3,7 @@ class ProblemsController < ApplicationController
   before_action :authenticate_user!, only: %I[new edit create destroy]
 
   def index
-    @problems = Problem.all
+    @problems = Problem.page(params[:page] || 1)
   end
 
   def show; end
