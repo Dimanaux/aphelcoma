@@ -20,28 +20,24 @@ class ProblemsController < ApplicationController
 
     respond_to do |format|
       if @problem.save
-        format.html { redirect_to @problem, notice: "Problem was successfully created." }
+        redirect_to @problem, notice: "Problem was successfully created."
       else
-        format.html { render :new }
+        render :new
       end
     end
   end
 
   def update
-    respond_to do |format|
-      if @problem.update(problem_params)
-        format.html { redirect_to @problem, notice: "Problem was successfully updated." }
-      else
-        format.html { render :edit }
-      end
-    end
+    if @problem.update(problem_params)
+      redirect_to @problem, notice: "Problem was successfully updated."
+    else
+      render :edit
+    end    
   end
 
   def destroy
     @problem.destroy
-    respond_to do |format|
-      format.html { redirect_to problems_url, notice: "Problem was successfully destroyed." }
-    end
+    redirect_to problems_url, notice: "Problem was successfully destroyed."
   end
 
   private
