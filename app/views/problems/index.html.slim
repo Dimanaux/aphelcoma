@@ -14,5 +14,6 @@ h1
           = link_to "Edit", edit_problem_path(problem), class: "card-link"
           = link_to "Destroy", problem, method: :delete, data: { confirm: "Are you sure?" }, class: "card-link"
 
+= paginate @problems
 br
 = link_to "New Problem", new_problem_path

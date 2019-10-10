@@ -1,14 +1,15 @@
 AllCops:
   Exclude:
     - 'db/**/*'
-    - 'config/**/*'
-    - 'script/**/*'
-    - 'bin/{rails,rake}'
+    - 'bin/**/*'
   Include:
     - 'app/**/*.rb'
+    - 'config/**/*.rb'
+    - 'lib/**/*.rb'
+    - 'spec/**/*.rb'
 
 Metrics/LineLength:
-  Max: 72
+  Max: 120
 
 Style/StringLiterals:
   Enabled: false
