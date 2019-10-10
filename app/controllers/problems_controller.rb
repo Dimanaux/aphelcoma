@@ -18,12 +18,10 @@ class ProblemsController < ApplicationController
     @problem = Problem.new(problem_params)
     @problem.user = current_user
 
-    respond_to do |format|
-      if @problem.save
-        redirect_to @problem, notice: "Problem was successfully created."
-      else
-        render :new
-      end
+    if @problem.save
+      redirect_to @problem, notice: "Problem was successfully created."
+    else
+      render :new
     end
   end
 
