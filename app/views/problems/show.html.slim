@@ -1,14 +1,9 @@
-p#notice
-  = notice
-p
-  strong
-    | Title:
+p#notice = notice
+h2
   = @problem.title
 p
-  strong
-    | Description:
   = markdown(@problem.description)
 
-= link_to 'Edit', edit_problem_path(@problem)
+= link_to "Edit", edit_problem_path(@problem)
 = " | "
-= link_to 'Back', problems_path
+= link_to "Back", problems_path

@@ -1,6 +1,8 @@
 h1
   | Editing Problem
-= render 'form', problem: @problem
-= link_to 'Show', @problem
+
+= render "form", problem: @problem
+
+= link_to "Show", @problem
 = " | "
-= link_to 'Back', problems_path
+= link_to "Back", problems_path
