@@ -1,11 +1,7 @@
 h1
   | Users
 
-.container
-  - @users.each do |user|
-    .card
-      .card-body
-        = link_to user.email, user, class: "card-link"
+.container = render @users
 
 = paginate @users
 br

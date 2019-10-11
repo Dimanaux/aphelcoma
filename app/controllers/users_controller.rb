@@ -9,8 +9,7 @@ class UsersController < ApplicationController
 
   private
 
-  def student_params
+  def user_params
     params.require(:user).permit(:id)
   end
-
 end
