@@ -1,6 +1,5 @@
-
 .row
-  h1 = @user.email
+  h1 = @user.username
   - if @user == current_user
     = link_to "Edit my account", edit_user_registration_url, class: "small"
 
