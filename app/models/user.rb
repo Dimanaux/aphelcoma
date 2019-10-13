@@ -7,6 +7,7 @@ class User < ApplicationRecord
   
   paginates_per PER_PAGE
   has_many :problems
+  validates :username, presence: true
 
   def to_param
     username
