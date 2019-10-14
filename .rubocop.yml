@@ -1,19 +1,56 @@
 AllCops:
   Exclude:
-    - 'db/**/*'
     - 'bin/**/*'
+    - 'db/**/*'
   Include:
     - 'app/**/*.rb'
     - 'config/**/*.rb'
     - 'lib/**/*.rb'
     - 'spec/**/*.rb'
 
+Layout/AlignHash:
+  Enabled: false
+
+Layout/EmptyLineAfterMagicComment:
+  Exclude:
+    - 'config/initializers/simple_form.rb'
+
+Layout/EmptyLines:
+  Exclude:
+    - 'config/initializers/simple_form_bootstrap.rb'
+
+Lint/UnusedBlockArgument:
+  Exclude:
+    - 'config/initializers/simple_form_bootstrap.rb'
+
+Metrics/BlockLength:
+  Exclude:
+    - 'config/environments/development.rb'
+    - 'config/initializers/simple_form_bootstrap.rb'
+
 Metrics/LineLength:
+  Exclude:
+    - 'config/initializers/devise.rb'
+    - 'config/initializers/simple_form_bootstrap.rb'
   Max: 120
 
-Style/StringLiterals:
+Style/Documentation:
   Enabled: false
-  EnforcedStyle: double_quotes
 
 Style/FrozenStringLiteralComment:
   Enabled: false
+
+Style/Lambda:
+  Exclude:
+    - 'config/initializers/simple_form_bootstrap.rb'
+
+Style/StringLiterals:
+  Exclude:
+    - 'config/application.rb'
+    - 'config/boot.rb'
+    - 'config/environment.rb'
+    - 'config/initializers/assets.rb'
+    - 'config/initializers/devise.rb'
+    - 'config/initializers/simple_form.rb'
+    - 'config/initializers/simple_form_bootstrap.rb'
+  EnforcedStyle: double_quotes
