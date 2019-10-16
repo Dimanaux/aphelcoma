@@ -7,6 +7,7 @@ gem "rails", "~> 6.0.0"
 
 # main
 gem "devise"
+gem "figaro"
 gem "kaminari"
 
 # views
@@ -24,13 +25,11 @@ gem "bootsnap", ">= 1.4.2", require: false
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
-end
-
-group :development do
-  gem "web-console", ">= 3.3.0"
   gem "listen", ">= 3.0.5", "< 3.2"
+  gem "rubocop"
   gem "spring"
   gem "spring-watcher-listen", "~> 2.0.0"
+  gem "web-console", ">= 3.3.0"
 end
 
 group :test do
