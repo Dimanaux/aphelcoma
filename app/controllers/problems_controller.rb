@@ -52,6 +52,7 @@ class ProblemsController < ApplicationController
   end
 
   def authorize!
+    # TODO remove this temporarily solution
     unless current_user == @problem.user
       redirect_to problems_url, notice: "You are not allowed to change this problem."
     end
