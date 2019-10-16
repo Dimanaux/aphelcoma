@@ -1,6 +1,7 @@
 class ProblemsController < ApplicationController
   before_action :set_problem, only: %I[show edit update destroy]
   before_action :authenticate_user!, only: %I[new edit create destroy]
+  before_action :authorize!, only: %I[edit update destroy]
 
   def index
     @problems = Problem.page(params[:page] || 1)
@@ -46,5 +47,12 @@ class ProblemsController < ApplicationController
 
   def problem_params
     params.require(:problem).permit(:title, :description, :user_id)
+  end
+
+  def authorize!
+    # TODO remove this temporarily solution
+    unless current_user == @problem.user
+      redirect_to problems_url, notice: "You are not allowed to change this problem."
+    end
   end
 end
