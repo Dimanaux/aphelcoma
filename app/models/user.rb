@@ -7,5 +7,5 @@ class User < ApplicationRecord
   
   paginates_per PER_PAGE
 
-  has_many :problems
+  has_many :problems, dependent: :destroy
 end
