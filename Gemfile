@@ -7,7 +7,6 @@ gem "rails", "~> 6.0.0"
 
 # main
 gem "devise"
-gem "figaro"
 gem "kaminari"
 
 # views
@@ -25,6 +24,10 @@ gem "bootsnap", ">= 1.4.2", require: false
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
+  gem "dotenv-rails"
+end
+
+group :development do
   gem "listen", ">= 3.0.5", "< 3.2"
   gem "rubocop"
   gem "spring"
