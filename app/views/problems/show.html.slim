@@ -6,3 +6,5 @@ p
 = link_to "Edit", edit_problem_path(@problem)
 = " | "
 = link_to "Back", problems_path
+
+.mb-4 = render 'comments/comments', comments: @problem.comments
