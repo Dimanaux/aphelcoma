@@ -1,0 +1,9 @@
+.card.mb-3
+  .card-body
+    p.card-text = comment.text
+    p.card-text
+      small.text-muted
+        = "by "
+        = link_to comment.user.email, comment.user
+        = " at "
+        = comment.created_at.strftime "%F"
