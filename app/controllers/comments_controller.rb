@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   before_action :set_problem
-  before_action :set_comment, only: [:update, :destroy]
+  before_action :set_comment, only: %I[update destroy]
 
   def create
     @comment = Comment.new(comment_params)
@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
     @comment.user = current_user
 
     if @comment.save
-      redirect_to @problem, notice: 'Comment was successfully created.'
+      redirect_to @problem, notice: "Comment was successfully created."
     else
       redirect_to @problem
     end
@@ -16,7 +16,7 @@ class CommentsController < ApplicationController
 
   def update
     if @comment.update(comment_params)
-      redirect_to @problem, notice: 'Comment was successfully updated.'
+      redirect_to @problem, notice: "Comment was successfully updated."
     else
       redirect_to @problem
     end
@@ -24,7 +24,7 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment.destroy
-    redirect_to @problem, notice: 'Comment was successfully destroyed.'
+    redirect_to @problem, notice: "Comment was successfully destroyed."
   end
 
   private
