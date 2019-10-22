@@ -4,7 +4,7 @@ class ProblemsController < ApplicationController
   before_action :authorize!, only: %I[edit update destroy]
 
   def index
-    @problems = Problem.page(params[:page] || 1)
+    @problems = Problem.order("created_at").page(params[:page] || 1)
   end
 
   def show; end
