@@ -7,7 +7,11 @@ class ProblemsController < ApplicationController
     @problems = Problem.order("created_at").page(params[:page] || 1)
   end
 
-  def show; end
+  def show
+    if current_user && !already_viewed?
+      @problem.views.create(user_id: current_user.id)
+    end
+  end
 
   def new
     @problem = Problem.new
@@ -47,6 +51,10 @@ class ProblemsController < ApplicationController
 
   def problem_params
     params.require(:problem).permit(:title, :description, :user_id)
+  end
+
+  def already_viewed?
+    View.where(user_id: current_user.id, problem_id: @problem.id).exists?
   end
 
   def authorize!
