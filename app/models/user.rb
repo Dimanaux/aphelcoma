@@ -13,6 +13,8 @@ class User < ApplicationRecord
 
   validates :username, presence: true, uniqueness: true
 
+  has_many :views, dependent: :destroy
+
   def to_param
     username
   end
