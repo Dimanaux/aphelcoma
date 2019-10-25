@@ -8,3 +8,4 @@
     - if current_user == problem.user
       = link_to "Edit", edit_problem_path(problem), class: "card-link"
       = link_to "Destroy", problem, method: :delete, data: { confirm: "Are you sure?" }, class: "card-link"
+    .float-right = "👁 #{problem.views.count}"
