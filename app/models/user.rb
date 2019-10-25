@@ -9,6 +9,8 @@ class User < ApplicationRecord
   has_many :problems, dependent: :destroy
   validates :username, presence: true, uniqueness: true
 
+  has_many :views, dependent: :destroy
+
   def to_param
     username
   end
