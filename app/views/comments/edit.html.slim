@@ -1,6 +1,9 @@
 h1
   | Editing Comment
+
+= render @comment.problem
+
 = render "form", comment: @comment
-= link_to "Show", @comment
-= " | "
-= link_to "Back", comments_path
+
+.mt-4
+  = link_to "Back", @comment.problem
