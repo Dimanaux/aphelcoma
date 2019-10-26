@@ -1,6 +1,8 @@
 class CommentsController < ApplicationController
   before_action :set_problem
-  before_action :set_comment, only: %I[update destroy]
+  before_action :set_comment, only: %I[edit update destroy]
+
+  def edit; end
 
   def create
     @comment = Comment.new(comment_params)
