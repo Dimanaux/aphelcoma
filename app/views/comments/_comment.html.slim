@@ -1,18 +1,17 @@
 .card.mb-3
   .card-body
-    p.card-text = comment.text
+    p.card-text = markdown(comment.text)
     .row
-      .col.mr-auto
+      .col
         p.card-text
           small.text-muted
             = "by "
             = link_to comment.user.email, comment.user
             = " at "
             = comment.created_at.strftime "%F"
-      .col.mr-auto
+      .col
         - if current_user == comment.user
-          button.btn.btn-link
-            = "Edit"
+          = link_to "Edit", edit_problem_comment_path(comment.problem, comment), class: "card-link"
           = link_to "Destroy",
                           problem_comment_path(comment.problem, comment),
                           method: :delete,
