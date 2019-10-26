@@ -6,8 +6,7 @@
         |  prohibited this problem from being saved:
       ul
         - problem.errors.full_messages.each do |message|
-          li
-            = message
+          li = message
   .field
     = form.input :title
   .field
