@@ -25,8 +25,13 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @comment.destroy
-    redirect_to @problem, notice: "Comment was successfully destroyed."
+    # FIXME: replace authorization in controllers with more suitable solution
+    if current_user == @comment.user
+      @comment.destroy
+      redirect_to @problem, notice: "Comment was successfully destroyed."
+    else
+      redirect_to @problem, notice: "You cannot destroy this comment."
+    end
   end
 
   private
