@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
   before_action :set_problem
   before_action :set_comment, only: %I[edit update destroy]
+  before_action :authorize!, only: %I[edit update destroy]
 
   def edit; end
 
@@ -25,13 +26,8 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    # FIXME: replace authorization in controllers with more suitable solution
-    if current_user == @comment.user
-      @comment.destroy
-      redirect_to @problem, notice: "Comment was successfully destroyed."
-    else
-      redirect_to @problem, notice: "You cannot destroy this comment."
-    end
+    @comment.destroy
+    redirect_to @problem, notice: "Comment was successfully destroyed."
   end
 
   private
@@ -42,6 +38,11 @@ class CommentsController < ApplicationController
 
   def set_comment
     @comment = Comment.find(params[:id])
+  end
+
+  def authorize!
+    # FIXME: replace authorization in controllers with more suitable solution
+    redirect_to @problem, notice: "You cannot change this comment." unless current_user == @comment.user
   end
 
   def comment_params
