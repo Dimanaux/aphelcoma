@@ -7,7 +7,9 @@ class ProblemsController < ApplicationController
     @problems = Problem.order("created_at").page(params[:page] || 1)
   end
 
-  def show; end
+  def show
+    @comments = Comment.where("problem_id = ?", @problem.id).order("created_at")
+  end
 
   def new
     @problem = Problem.new
