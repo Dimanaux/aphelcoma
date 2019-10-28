@@ -3,7 +3,7 @@ h1
 
 = render @comment.problem
 
-= render "form", comment: @comment
+= render "comments/edit_form", comment: @comment
 
 .mt-4
   = link_to "Back", @comment.problem
