@@ -1,5 +1,6 @@
 exclude:
-- 'app/views/devise/shared/_links.html.slim'
+  - 'app/views/devise/shared/_links.html.slim'
+  - 'vendor/bundle/**/*'
 
 linters:
   LineLength:
