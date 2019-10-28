@@ -6,6 +6,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   paginates_per PER_PAGE
+  has_many :problems, dependent: :destroy
+  validates :username, presence: true, uniqueness: true
 
-  has_many :problems
+  def to_param
+    username
+  end
 end

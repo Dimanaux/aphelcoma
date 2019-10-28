@@ -4,7 +4,7 @@ class ProblemsController < ApplicationController
   before_action :authorize!, only: %I[edit update destroy]
 
   def index
-    @problems = Problem.page(params[:page] || 1)
+    @problems = Problem.order("created_at").page(params[:page] || 1)
   end
 
   def show; end
@@ -50,9 +50,7 @@ class ProblemsController < ApplicationController
   end
 
   def authorize!
-    # TODO remove this temporarily solution
-    unless current_user == @problem.user
-      redirect_to problems_url, notice: "You are not allowed to change this problem."
-    end
+    # TODO: remove this temporarily solution
+    redirect_to problems_url, notice: "You are not allowed to change this problem." unless current_user == @problem.user
   end
 end
