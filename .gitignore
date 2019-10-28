@@ -29,3 +29,8 @@
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+
+# Ignore application configuration
+/.env
+/config/application.yml
+/config/local_env.yml

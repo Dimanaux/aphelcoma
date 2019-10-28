@@ -7,12 +7,15 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light
   ul.navbar-nav
     - if user_signed_in?
       li.nav-item
+        = link_to "My account: #{current_user.email}", current_user, class: "nav-link"
+      li.nav-item
+        span.navbar-text = "/"
+      li.nav-item
         = link_to "Sign out", destroy_user_session_path, method: :delete, class: "nav-link"
     - else
       li.nav-item
         = link_to "Log in", new_user_session_path, class: "nav-link"
       li.nav-item
-        span.navbar-text
-          = "/"
+        span.navbar-text = "/"
       li.nav-item
         = link_to "Join", new_user_registration_path, class: "nav-link"

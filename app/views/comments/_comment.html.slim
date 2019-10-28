@@ -1,0 +1,20 @@
+.card.mb-3
+  .card-body
+    p.card-text = comment.text
+    .row
+      .col.mr-auto
+        p.card-text
+          small.text-muted
+            = "by "
+            = link_to comment.user.email, comment.user
+            = " at "
+            = comment.created_at.strftime "%F"
+      .col.mr-auto
+        - if current_user == comment.user
+          button.btn.btn-link
+            = "Edit"
+          = link_to "Destroy",
+                          problem_comment_path(comment.problem, comment),
+                          method: :delete,
+                          data: { confirm: "Are you sure?" },
+                          class: "card-link"

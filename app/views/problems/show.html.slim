@@ -1,9 +1,17 @@
-p#notice = notice
-h2
-  = @problem.title
+h2 = @problem.title
+p.small
+  = "published on #{@problem.created_at.strftime('%F')} by "
+  = link_to @problem.user.username, @problem.user
 p
   = markdown(@problem.description)
 
-= link_to "Edit", edit_problem_path(@problem)
-= " | "
-= link_to "Back", problems_path
+= link_to "Back", problems_path, class: "card-link"
+- if current_user == @problem.user
+  = link_to "Edit", edit_problem_path(@problem), class: "card-link"
+  = link_to "Destroy",
+                  @problem,
+                  method: :delete,
+                  data: { confirm: "Are you sure?" },
+                  class: "card-link"
+
+.mb-4 = render "comments/comments", comments: @problem.comments
