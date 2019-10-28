@@ -3,9 +3,7 @@ class CommentsController < ApplicationController
   before_action :set_comment, only: %I[update destroy]
 
   def create
-    @comment = Comment.new(comment_params)
-    @comment.problem = @problem
-    @comment.user = current_user
+    @comment = Comment.new comment_params.merge(user_id: current_user.id, problem_id: @problem.id)
 
     if @comment.save
       redirect_to @problem, notice: "Comment was successfully created."
