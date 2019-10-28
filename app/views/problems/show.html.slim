@@ -1,7 +1,6 @@
-h2
-  = @problem.title
+h2 = @problem.title
 p.small
-  = "published on #{@problem.created_at.strftime("%F")} by "
+  = "published on #{@problem.created_at.strftime('%F')} by "
   = link_to @problem.user.username, @problem.user
 p
   = markdown(@problem.description)
@@ -14,3 +13,5 @@ p
                   method: :delete,
                   data: { confirm: "Are you sure?" },
                   class: "card-link"
+
+.mb-4 = render "comments/comments", comments: @problem.comments

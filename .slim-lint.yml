@@ -8,7 +8,3 @@ linters:
 
   RedundantDiv:
     enabled: false
-
-StringLiterals:
-  Exclude:
-    - 'app/views/devise/shared/_links.html.slim'

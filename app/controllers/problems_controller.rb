@@ -16,8 +16,7 @@ class ProblemsController < ApplicationController
   def edit; end
 
   def create
-    @problem = Problem.new(problem_params)
-    @problem.user = current_user
+    @problem = Problem.new problem_params.merge(user_id: current_user.id)
 
     if @problem.save
       redirect_to @problem, notice: "Problem was successfully created."
