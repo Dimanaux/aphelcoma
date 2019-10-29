@@ -1,7 +1,7 @@
 .mt-2
-  h3 = "Comments"
+  h3 Comments
   .container
     = render comments
   - if current_user
     .mt-2
-      = render "comments/new_form", comment: Comment.new(user: current_user, problem_id: @problem.id)
+      = render "comments/form", comment: current_user.comments.new(problem_id: @problem.id)
