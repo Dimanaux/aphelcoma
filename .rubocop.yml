@@ -1,12 +1,18 @@
+inherit_mode:
+  merge:
+    - Exclude
+
 AllCops:
   Exclude:
     - 'bin/**/*'
     - 'db/**/*'
+    - 'vendor/bundle/**/*'
   Include:
     - 'app/**/*.rb'
     - 'config/**/*.rb'
     - 'lib/**/*.rb'
     - 'spec/**/*.rb'
+  TargetRubyVersion: 2.6
 
 Layout/AlignHash:
   Enabled: false

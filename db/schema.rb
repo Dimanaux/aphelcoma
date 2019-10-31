@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_26_115930) do
+ActiveRecord::Schema.define(version: 2019_10_20_161033) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "comments", force: :cascade do |t|
+    t.bigint "problem_id", null: false
+    t.bigint "user_id", null: false
+    t.text "text"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["problem_id"], name: "index_comments_on_problem_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
 
   create_table "problems", force: :cascade do |t|
     t.string "title"
@@ -32,9 +42,13 @@ ActiveRecord::Schema.define(version: 2019_09_26_115930) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "username", limit: 16
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  add_foreign_key "comments", "problems"
+  add_foreign_key "comments", "users"
   add_foreign_key "problems", "users"
 end

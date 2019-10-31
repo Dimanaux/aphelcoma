@@ -1,7 +1,8 @@
 .problem.card.float-left
   .card-body
     h5.card-title = problem.title
-    h6.card-subtitle.mb-2.text-muted = "by #{problem.user.email}"
+    h6.card-subtitle.mb-2.text-muted
+      = link_to "by #{problem.user.username}", problem.user
     p.card-text = problem.description.lines.first
     = link_to "Show", problem, class: "card-link"
     - if current_user == problem.user
