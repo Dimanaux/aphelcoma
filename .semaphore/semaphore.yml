@@ -53,7 +53,7 @@ blocks:
             # restored, but generally this is not the case with other package
             # managers. Installation will not actually run and command will
             # finish quickly:
-            - sem-version ruby 2.6.3
+            - sem-version ruby 2.6.5
             - bundle install --deployment --path vendor/bundle
             - bundle exec rubocop
-            - bundle exec slim-lint .
+            - bundle exec slim-lint app/views
