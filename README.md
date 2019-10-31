@@ -1,24 +1,20 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Aphelcoma
 
-Things you may want to cover:
+A place where we can search programming problems, solve, rate them.
 
-* Ruby version
+* Ruby version: ~> 2.6.5
 
-* System dependencies
+* System dependencies: PostgreSQL
 
-* Configuration
+* Configuration: .env
 
-* Database creation
+* Database creation: rake db:create, rake db:migrate
 
-* Database initialization
+* Database initialization:
 
 * How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Deployment instructions:
+- create file .env if you want mailing, see .env.example.
