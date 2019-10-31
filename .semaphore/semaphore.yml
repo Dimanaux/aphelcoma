@@ -4,7 +4,7 @@ version: v1.0
 # Name your pipeline. In case you connect multiple pipelines with promotions,
 # the name will help you differentiate between, for example, a CI build phase
 # and delivery phases.
-name: Demo Rails 6 app
+name: Aphelcoma (Rails 6 app)
 
 # An agent defines the environment in which your code runs.
 # It is a combination of one of available machine types and operating
@@ -53,6 +53,6 @@ blocks:
             # restored, but generally this is not the case with other package
             # managers. Installation will not actually run and command will
             # finish quickly:
-            - sem-version ruby 2.6.3
+            - sem-version ruby 2.6.5
             - bundle install --deployment --path vendor/bundle
-            - bundle exec rubocop
+            - bin/quality

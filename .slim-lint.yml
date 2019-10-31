@@ -1,3 +1,7 @@
+exclude:
+  - 'app/views/devise/shared/_links.html.slim'
+  - 'vendor/bundle/**/*'
+
 linters:
   LineLength:
     include: 'app/views/**/*.slim'
@@ -5,7 +9,3 @@ linters:
 
   RedundantDiv:
     enabled: false
-
-  StringLiterals:
-    exclude:
-      - 'app/views/devise/shared/_links.html.slim'
