@@ -8,7 +8,7 @@ class ProblemsController < ApplicationController
   end
 
   def show
-    @comments = Comment.where("problem_id = ?", @problem.id).order("created_at")
+    @comments = @problem.comments.order(:created_at)
   end
 
   def new
