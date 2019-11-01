@@ -4,4 +4,4 @@
     = render comments
   - if current_user
     .mt-2
-      = render "comments/form", comment: current_user.comments.new(problem_id: @problem.id)
+      = render "comments/new_form", comment: current_user.comments.new(problem_id: @problem.id)
