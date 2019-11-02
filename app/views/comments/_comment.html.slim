@@ -1,18 +1,18 @@
 .card.mb-3
   .card-body
-    p.card-text = comment.text
+    p.card-text = render "layouts/markdown", text: comment.text, cached: true
     .row
-      .col.mr-auto
+      .col
         p.card-text
           small.text-muted
             = "by "
             = link_to comment.user.email, comment.user
             = " at "
             = comment.created_at.strftime "%F"
-      .col.mr-auto
-        - if current_user == comment.user
-          button.btn.btn-link
-            = "Edit"
+      .col
+        - if policy(comment).edit?
+          = link_to "Edit", edit_problem_comment_path(comment.problem, comment), class: "card-link"
+        - if policy(comment).destroy?
           = link_to "Destroy",
                           problem_comment_path(comment.problem, comment),
                           method: :delete,
