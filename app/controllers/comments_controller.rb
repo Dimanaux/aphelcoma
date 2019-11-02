@@ -6,6 +6,7 @@ class CommentsController < ApplicationController
 
   def create
     @comment = Comment.new comment_params.merge(user_id: current_user.id, problem_id: @problem.id)
+    authorize @comment
 
     if @comment.save
       redirect_to @problem, notice: "Comment was successfully created."
@@ -35,6 +36,7 @@ class CommentsController < ApplicationController
 
   def set_comment
     @comment = Comment.find(params[:id])
+    authorize @comment
   end
 
   def comment_params
