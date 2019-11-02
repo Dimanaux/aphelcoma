@@ -12,12 +12,14 @@ class ProblemsController < ApplicationController
 
   def new
     @problem = Problem.new
+    authorize @problem
   end
 
   def edit; end
 
   def create
     @problem = Problem.new problem_params.merge(user_id: current_user.id)
+    authorize @problem
 
     if @problem.save
       redirect_to @problem, notice: "Problem was successfully created."
@@ -43,6 +45,7 @@ class ProblemsController < ApplicationController
 
   def set_problem
     @problem = Problem.find(params[:id])
+    authorize @problem
   end
 
   def problem_params
