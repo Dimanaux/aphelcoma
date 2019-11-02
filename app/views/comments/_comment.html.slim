@@ -1,6 +1,6 @@
 .card.mb-3
   .card-body
-    p.card-text = markdown(comment.text)
+    p.card-text = render "layouts/markdown", text: comment.text, cached: true
     .row
       .col
         p.card-text

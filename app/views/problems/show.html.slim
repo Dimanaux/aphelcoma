@@ -3,7 +3,7 @@ p.small
   = "published on #{@problem.created_at.strftime('%F')} by "
   = link_to @problem.user.username, @problem.user
 p
-  = markdown(@problem.description)
+  = render "layouts/markdown", text: @problem.description, cached: true
 
 = link_to "Back", problems_path, class: "card-link"
 - if policy(@problem).edit?
