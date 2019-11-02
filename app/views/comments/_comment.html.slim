@@ -10,8 +10,9 @@
             = " at "
             = comment.created_at.strftime "%F"
       .col
-        - if current_user == comment.user
+        - if policy(comment).edit?
           = link_to "Edit", edit_problem_comment_path(comment.problem, comment), class: "card-link"
+        - if policy(comment).destroy?
           = link_to "Destroy",
                           problem_comment_path(comment.problem, comment),
                           method: :delete,
