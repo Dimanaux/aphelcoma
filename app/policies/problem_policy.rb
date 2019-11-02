@@ -12,7 +12,7 @@ class ProblemPolicy < ApplicationPolicy
   end
 
   def destroy?
-    user.present? && user == problem.user
+    update?
   end
 
   private
