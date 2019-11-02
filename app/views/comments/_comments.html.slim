@@ -2,6 +2,6 @@
   h3 Comments
   .container
     = render comments
-  - if current_user
+  - if user_signed_in?
     .mt-2
       = render "comments/new_form", comment: current_user.comments.new(problem_id: @problem.id)
