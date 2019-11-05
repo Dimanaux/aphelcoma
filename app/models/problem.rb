@@ -1,7 +1,8 @@
 class Problem < ApplicationRecord
   PER_PAGE = 12
-  belongs_to :user
   paginates_per PER_PAGE
 
+  belongs_to :user
+  has_many :comments, dependent: :destroy
   has_many :views, dependent: :destroy
 end

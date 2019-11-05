@@ -1,13 +1,16 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "2.6.3"
+ruby "2.6.5"
 
 gem "rails", "~> 6.0.0"
 
 # main
+gem "activerecord-session_store"
 gem "devise"
+gem "omniauth-google-oauth2"
 gem "kaminari"
+gem "pundit"
 
 # views
 gem "redcarpet"
@@ -30,6 +33,7 @@ end
 group :development do
   gem "listen", ">= 3.0.5", "< 3.2"
   gem "rubocop"
+  gem "slim_lint"
   gem "spring"
   gem "spring-watcher-listen", "~> 2.0.0"
   gem "web-console", ">= 3.3.0"

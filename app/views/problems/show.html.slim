@@ -1,15 +1,15 @@
-h2
-  = @problem.title
+h2 = @problem.title
 p.small
-  = "published on #{@problem.created_at.strftime("%F")} by "
+  = "published on #{@problem.created_at.strftime('%F')} by "
   = link_to @problem.user.username, @problem.user
 p
-  = markdown(@problem.description)
+  = render "layouts/markdown", text: @problem.description, cached: true
 
 .float-left
   = link_to "Back", problems_path, class: "card-link"
-  - if current_user == @problem.user
+  - if policy(@problem).edit?
     = link_to "Edit", edit_problem_path(@problem), class: "card-link"
+  - if policy(@problem).destroy?
     = link_to "Destroy",
                     @problem,
                     method: :delete,
@@ -17,3 +17,4 @@ p
                     class: "card-link"
 .float-right
   = pluralize(@problem.views.count, "view")
+.mb-4 = render "comments/comments", comments: @comments

@@ -1,2 +1,4 @@
-p#notice = notice
-p#alert = alert
+- if notice
+  .alert.alert-success#notice = notice
+- if alert
+  .alert.alert-danger#alert = alert

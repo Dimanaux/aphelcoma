@@ -1,0 +1,7 @@
+.mt-2
+  h3 Comments
+  .container
+    = render comments
+  - if policy(:comment).new?
+    .mt-2
+      = render "comments/new_form", comment: current_user.comments.new(problem_id: @problem.id)
