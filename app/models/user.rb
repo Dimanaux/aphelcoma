@@ -27,4 +27,8 @@ class User < ApplicationRecord
       password: Devise.friendly_token
     )
   end
+
+  def view!(problem)
+    views.where(problem: problem).first || views.create(problem: problem)
+  end
 end
