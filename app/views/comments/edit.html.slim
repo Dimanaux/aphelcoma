@@ -1,6 +1,11 @@
 h1
   | Editing Comment
-= render "form", comment: @comment
-= link_to "Show", @comment
-= " | "
-= link_to "Back", comments_path
+
+.clearfix
+  = render @comment.problem
+
+.mt-4
+  = render "comments/edit_form", comment: @comment
+
+.mt-4
+  = link_to "Back", @comment.problem
