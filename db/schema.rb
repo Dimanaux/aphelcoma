@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_02_210402) do
+ActiveRecord::Schema.define(version: 2019_11_11_094813) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,16 @@ ActiveRecord::Schema.define(version: 2019_11_02_210402) do
     t.index ["updated_at"], name: "index_sessions_on_updated_at"
   end
 
+  create_table "solutions", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "problem_id", null: false
+    t.text "code"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["problem_id"], name: "index_solutions_on_problem_id"
+    t.index ["user_id"], name: "index_solutions_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -57,7 +67,21 @@ ActiveRecord::Schema.define(version: 2019_11_02_210402) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  create_table "views", force: :cascade do |t|
+    t.bigint "problem_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["problem_id"], name: "index_views_on_problem_id"
+    t.index ["user_id", "problem_id"], name: "index_views_on_user_id_and_problem_id", unique: true
+    t.index ["user_id"], name: "index_views_on_user_id"
+  end
+
   add_foreign_key "comments", "problems"
   add_foreign_key "comments", "users"
   add_foreign_key "problems", "users"
+  add_foreign_key "solutions", "problems"
+  add_foreign_key "solutions", "users"
+  add_foreign_key "views", "problems"
+  add_foreign_key "views", "users"
 end
