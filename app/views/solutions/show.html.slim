@@ -1,0 +1,17 @@
+p#notice
+  = notice
+p
+  strong
+    | User:
+  = @solution.user_id
+p
+  strong
+    | Problem:
+  = @solution.problem_id
+p
+  strong
+    | Code:
+  = @solution.code
+= link_to 'Edit', edit_solution_path(@solution)
+|  | 
+= link_to 'Back', solutions_path
