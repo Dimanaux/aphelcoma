@@ -1,6 +1,10 @@
 class SolutionPolicy < ApplicationPolicy
   def index?
-    user.solutions.where("problem_id = ?", solution.problem_id).exists?
+    user.present? && user.solutions.where("problem_id = ?", solution.problem_id).exists?
+  end
+
+  def show?
+    index?
   end
 
   def create?
