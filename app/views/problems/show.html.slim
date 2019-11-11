@@ -5,14 +5,21 @@ p.small
 p
   = render "layouts/markdown", text: @problem.description, cached: true
 
-= link_to "Back", problems_path, class: "card-link"
-- if policy(@problem).edit?
-  = link_to "Edit", edit_problem_path(@problem), class: "card-link"
-- if policy(@problem).destroy?
-  = link_to "Destroy",
-                  @problem,
-                  method: :delete,
-                  data: { confirm: "Are you sure?" },
-                  class: "card-link"
+.clearfix
+  .float-left
+    = link_to "Back", problems_path, class: "card-link"
+    - if policy(@problem).edit?
+      = link_to "Edit", edit_problem_path(@problem), class: "card-link"
+    - if policy(@problem).destroy?
+      = link_to "Destroy",
+                      @problem,
+                      method: :delete,
+                      data: { confirm: "Are you sure?" },
+                      class: "card-link"
+  .float-right
+    - if policy(:solution).new?
+      = link_to "Upload solution!",
+                      new_problem_solution_path(@problem.id),
+                      class: "btn btn-outline-success"
 
-.mb-4 = render "comments/comments", comments: @comments
+.container.mb-4 = render "comments/comments", comments: @comments
