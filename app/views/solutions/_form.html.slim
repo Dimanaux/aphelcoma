@@ -1,9 +1,11 @@
-= simple_form_for(@solution) do |f|
+= simple_form_for(@solution, url: form_url) do |f|
   = f.error_notification
   = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
   .form-inputs
-    = f.association :user
-    = f.association :problem
-    = f.input :code
+    .field
+      = f.input :code,
+                      as: :text,
+                      input_html: { rows: 10, class: "text-monospace" }
   .form-actions
-    = f.button :submit
+    .float-right
+      = f.button :submit, class: "btn btn-success"
