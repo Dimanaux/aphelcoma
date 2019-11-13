@@ -36,7 +36,7 @@ blocks:
           # Read about caching: https://docs.semaphoreci.com/article/149-caching
           - cache restore
           # Set Ruby version:
-          - sem-version ruby 2.6.3
+          - sem-version ruby 2.6.5
           - bundle install --deployment -j 4 --path vendor/bundle
           # Store the latest version of dependencies in cache,
           # to be used in next blocks and future workflows:
@@ -47,12 +47,25 @@ blocks:
       jobs:
         - name: check style
           commands:
-            - checkout
-            - cache restore
-            # Bundler requires `install` to run even though cache has been
-            # restored, but generally this is not the case with other package
-            # managers. Installation will not actually run and command will
-            # finish quickly:
-            - sem-version ruby 2.6.5
-            - bundle install --deployment --path vendor/bundle
-            - bin/quality
+          - checkout
+          - cache restore
+          # Bundler requires `install` to run even though cache has been
+          # restored, but generally this is not the case with other package
+          # managers. Installation will not actually run and command will
+          # finish quickly:
+          - sem-version ruby 2.6.5
+          - bundle install --deployment --path vendor/bundle
+          - bin/quality
+
+  - name: Test
+    task:
+      jobs:
+        - name: run spec
+          commands:
+          - checkout
+          - cache restore
+          - sem-version ruby 2.6.5
+          - bundle install --deployment -j 4 --path vendor/bundle
+          - bundle exec rake db:migrate
+          - bundle exec rake db:test:prepare
+          - bundle exec rspec
