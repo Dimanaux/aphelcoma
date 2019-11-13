@@ -1,24 +1,27 @@
 class SolutionsController < ApplicationController
-  before_action :set_problem, only: %I[index new create]
+  before_action :set_problem, only: %I[index new create destroy]
   before_action :set_solution, only: %I[show edit update destroy]
+  before_action :authenticate_user!
 
   def index
-    @solutions = Solution.all
+    @solutions = Solution.where("problem_id = ?", @problem.id)
+    authorize @solutions
   end
 
   def show; end
 
   def new
     @solution = Solution.new
+    authorize @solution
   end
 
   def edit; end
 
   def create
-    @solution = Solution.new(solution_params)
+    @solution = Solution.new solution_params.merge(user_id: current_user.id, problem_id: @problem.id)
 
     if @solution.save
-      redirect_to @solution, notice: "Solution was successfully created."
+      redirect_to problem_solutions_url(@problem.id), notice: "Solution was successfully created."
     else
       render :new
     end
@@ -26,7 +29,7 @@ class SolutionsController < ApplicationController
 
   def update
     if @solution.update(solution_params)
-      redirect_to @solution, notice: "Solution was successfully updated."
+      redirect_to problem_solutions_url(@problem.id), notice: "Solution was successfully updated."
     else
       render :edit
     end
@@ -34,17 +37,18 @@ class SolutionsController < ApplicationController
 
   def destroy
     @solution.destroy
-    redirect_to solutions_url, notice: "Solution was successfully destroyed."
+    redirect_to problem_solutions_url(@problem.id), notice: "Solution was successfully destroyed."
   end
 
   private
 
   def set_solution
     @solution = Solution.find(params[:id])
+    authorize @solution
   end
 
   def solution_params
-    params.require(:solution).permit(:user_id, :problem_id, :code)
+    params.require(:solution).permit(:code)
   end
 
   def set_problem
