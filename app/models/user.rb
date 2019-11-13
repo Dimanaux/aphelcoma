@@ -10,6 +10,7 @@ class User < ApplicationRecord
 
   has_many :problems, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :solutions, dependent: :destroy
 
   validates :username, presence: true, uniqueness: true
 

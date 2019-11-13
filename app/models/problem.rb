@@ -3,4 +3,5 @@ class Problem < ApplicationRecord
   paginates_per PER_PAGE
   belongs_to :user
   has_many :comments, dependent: :destroy
+  has_many :solutions, dependent: :destroy
 end
