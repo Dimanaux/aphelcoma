@@ -1,6 +1,7 @@
 class SolutionPolicy < ApplicationPolicy
   def index?
-    user.present? && user.solutions.where("problem_id = ?", solution.problem_id).exists?
+    # TODO: index only to problem's author
+    user.present?
   end
 
   def show?
