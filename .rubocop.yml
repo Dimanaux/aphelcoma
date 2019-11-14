@@ -33,6 +33,7 @@ Metrics/BlockLength:
   Exclude:
     - 'config/environments/development.rb'
     - 'config/initializers/simple_form_bootstrap.rb'
+    - 'spec/features/**/*.rb'
 
 Metrics/LineLength:
   Exclude:

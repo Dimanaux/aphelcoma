@@ -4,7 +4,6 @@ describe "Join", type: :feature do
   let(:old_user) { attributes_for :user }
   let(:new_user) { attributes_for :user }
 
-
   def fill_user_form(user)
     fill_in :user_email, with: user[:email]
     fill_in :user_username, with: user[:username]

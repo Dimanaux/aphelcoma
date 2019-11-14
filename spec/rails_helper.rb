@@ -9,9 +9,7 @@ require "shoulda/matchers"
 require "simplecov"
 require "spec_helper"
 
-# rubocop:disable Rails/FilePath
 Dir[Rails.root.join("spec", "support", "**/*.rb")].each { |f| require f }
-# rubocop:enable Rails/FilePath
 
 begin
   ActiveRecord::Migration.maintain_test_schema!
