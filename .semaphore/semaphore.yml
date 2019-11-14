@@ -67,5 +67,4 @@ blocks:
           - sem-version ruby 2.6.5
           - bundle install --deployment -j 4 --path vendor/bundle
           - bundle exec rake db:migrate
-          - bundle exec rake db:test:prepare
-          - bundle exec rspec
+          - bin/spec
