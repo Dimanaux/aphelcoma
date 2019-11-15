@@ -59,15 +59,22 @@ blocks:
 
   - name: Test
     task:
+      env_vars:
+      - name: DATABASE_URL
+        value: "postgres://postgres@0.0.0.0:5432"
       jobs:
-        - name: run spec
-          commands:
-          - checkout
-          - cache restore
-          - sem-version ruby 2.6.5
-          - bundle install --deployment -j 4 --path vendor/bundle
-          - bundle exec rake db:migrate
-          - bin/spec
+      - name: PostgreSQL
+        commands:
+        - sem-service start postgres
+        - sem-service status postgres
+      - name: run spec
+        commands:
+        - checkout
+        - cache restore
+        - sem-version ruby 2.6.5
+        - bundle install --deployment -j 4 --path vendor/bundle
+        - bundle exec rake db:migrate
+        - bin/spec
       epilogue:
         on_fail:
           commands:
