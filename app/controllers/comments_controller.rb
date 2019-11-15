@@ -7,25 +7,18 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new comment_params.merge(user_id: current_user.id, problem_id: @problem.id)
     authorize @comment
-
-    if @comment.save
-      redirect_to @problem, notice: "Comment was successfully created."
-    else
-      redirect_to @problem
-    end
+    @comment.save
+    respond_with @comment, location: -> { problem_path(@problem) }
   end
 
   def update
-    if @comment.update(comment_params)
-      redirect_to @problem, notice: "Comment was successfully updated."
-    else
-      redirect_to @problem
-    end
+    @comment.update(comment_params)
+    respond_with @comment, location: -> { problem_path(@problem) }
   end
 
   def destroy
     @comment.destroy
-    redirect_to @problem, notice: "Comment was successfully destroyed."
+    respond_with @comment, location: -> { problem_path(@problem) }
   end
 
   private
