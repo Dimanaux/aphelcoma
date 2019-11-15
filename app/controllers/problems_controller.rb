@@ -25,16 +25,13 @@ class ProblemsController < ApplicationController
   end
 
   def update
-    if @problem.update(problem_params)
-      redirect_to @problem, notice: "Problem was successfully updated."
-    else
-      render :edit
-    end
+    @problem.update(problem_params)
+    respond_with @problem
   end
 
   def destroy
     @problem.destroy
-    redirect_to problems_url, notice: "Problem was successfully destroyed."
+    respond_with @problem
   end
 
   private
