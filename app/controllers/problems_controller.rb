@@ -20,12 +20,8 @@ class ProblemsController < ApplicationController
   def create
     @problem = Problem.new problem_params.merge(user_id: current_user.id)
     authorize @problem
-
-    if @problem.save
-      redirect_to @problem, notice: "Problem was successfully created."
-    else
-      render :new
-    end
+    @problem.save
+    respond_with @problem
   end
 
   def update
