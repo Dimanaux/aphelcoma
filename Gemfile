@@ -11,6 +11,7 @@ gem "devise"
 gem "omniauth-google-oauth2"
 gem "kaminari"
 gem "pundit"
+gem "responders"
 
 # views
 gem "redcarpet"
