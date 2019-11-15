@@ -68,3 +68,7 @@ blocks:
           - bundle install --deployment -j 4 --path vendor/bundle
           - bundle exec rake db:migrate
           - bin/spec
+      epilogue:
+        on_fail:
+          commands:
+          - artifact push job coverage
