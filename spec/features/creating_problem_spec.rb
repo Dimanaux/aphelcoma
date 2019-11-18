@@ -18,12 +18,6 @@ feature "Creating problem" do
     expect(page).to have_content problem.title
   end
 
-  it "forbids to create a problem for anonymous guest" do
-    log_out
-    visit problems_path
-    expect(page).not_to have_content "New problem"
-  end
-
   it "forbids problems with empty title" do
     visit new_problem_path
     fill_in :problem_description, with: problem.description
@@ -38,5 +32,12 @@ feature "Creating problem" do
     click_button "Create Problem"
     expect(page).not_to have_content "Problem was successfully created"
     expect(page).to have_content "Description can't be blank"
+  end
+end
+
+describe "Creating problem as anonymous" do
+  it "forbids to create a problem for anonymous guest" do
+    visit problems_path
+    expect(page).not_to have_content "New problem"
   end
 end
