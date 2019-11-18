@@ -1,12 +1,12 @@
 require "rails_helper"
 
-describe "Destroying problem", js: true do
+describe "Destroying problem" do
   include_context "logged in"
   include_context "problem"
 
   let(:my_problem) { create(:problem, user: current_user) }
 
-  it "allows to destroy my problem" do
+  it "allows to destroy my problem", js: true do
     visit problem_path(my_problem)
     expect(page).to have_content "Destroy"
     click_link "Destroy"
