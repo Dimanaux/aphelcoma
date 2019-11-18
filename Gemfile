@@ -38,6 +38,7 @@ end
 
 group :test do
   gem "capybara", ">= 2.15"
+  gem "capybara-selenium"
   gem "factory_bot_rails"
   gem "ffaker"
   gem "rspec-rails", "~> 3.9.0"
