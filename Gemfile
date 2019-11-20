@@ -30,6 +30,7 @@ end
 group :development do
   gem "listen", ">= 3.0.5", "< 3.2"
   gem "rubocop"
+  gem "rubocop-rspec"
   gem "slim_lint"
   gem "spring"
   gem "spring-watcher-listen", "~> 2.0.0"
