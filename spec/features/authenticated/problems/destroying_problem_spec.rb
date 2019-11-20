@@ -1,21 +1,24 @@
 require "rails_helper"
 
-describe "Destroying problem" do
-  include_context "logged in"
-  include_context "problem"
+describe Problem do
+  include_context "when logged in"
+  include_context "when viewing problem"
 
   let(:my_problem) { create(:problem, user: current_user) }
 
-  it "allows to destroy my problem", js: true do
-    visit problem_path(my_problem)
-    expect(page).to have_content "Destroy"
+  def destroy_problem(problem)
+    visit problem_path(problem)
     click_link "Destroy"
     page.accept_alert
+  end
+
+  it "can be destroyed by its author", js: true do
+    destroy_problem(my_problem)
     expect(page).to have_content "Problem was successfully destroyed"
     expect(page).not_to have_content my_problem.title
   end
 
-  it "forbids to destroy other user's problem" do
+  it "cannot be destroyed by other users" do
     visit problem_path(problem)
     expect(page).not_to have_content "Destroy"
   end

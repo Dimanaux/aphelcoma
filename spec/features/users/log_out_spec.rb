@@ -1,9 +1,9 @@
 require "rails_helper"
 
-describe "Log out" do
-  include_context "logged in"
+describe User do
+  include_context "when logged in"
 
-  it "User logs out" do
+  it "can log out" do
     visit "/"
     click_link "Log out"
     expect(page).to have_content("Log in")

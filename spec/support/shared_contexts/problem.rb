@@ -1,4 +1,4 @@
-shared_context "problem" do
+shared_context "when viewing problem" do
   let(:problem) { create :problem }
 
   before do
