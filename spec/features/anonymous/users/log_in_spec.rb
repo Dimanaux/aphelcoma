@@ -12,12 +12,12 @@ describe User do
 
   it "can log in using correct credentials" do
     log_in(user.email, user.password)
-    expect(page).to have_content("My account")
+    expect(page).to have_content "My account"
   end
 
   it "can't log in using incorrect credentials" do
     log_in(user.email, "wrong password")
-    expect(page).to have_content("Sign in")
-    expect(page).to have_content("Invalid Email or password")
+    expect(page).to have_content "Sign in"
+    expect(page).to have_content "Invalid Email or password"
   end
 end
