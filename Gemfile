@@ -8,8 +8,9 @@ gem "rails", "~> 6.0.0"
 # main
 gem "activerecord-session_store"
 gem "devise"
-gem "omniauth-google-oauth2"
+gem "interactor"
 gem "kaminari"
+gem "omniauth-google-oauth2"
 gem "pundit"
 gem "responders"
 
