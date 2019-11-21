@@ -4,15 +4,18 @@ p.small
   = link_to @problem.user.username, @problem.user
 p
   = render "layouts/markdown", text: @problem.description, cached: true
-
-= link_to "Back", problems_path, class: "card-link"
-- if policy(@problem).edit?
-  = link_to "Edit", edit_problem_path(@problem), class: "card-link"
-- if policy(@problem).destroy?
-  = link_to "Destroy",
-                  @problem,
-                  method: :delete,
-                  data: { confirm: "Are you sure?" },
-                  class: "card-link"
+.clearfix
+  .float-left
+    = link_to "Back", problems_path, class: "card-link"
+    - if policy(@problem).edit?
+      = link_to "Edit", edit_problem_path(@problem), class: "card-link"
+    - if policy(@problem).destroy?
+      = link_to "Destroy",
+                      @problem,
+                      method: :delete,
+                      data: { confirm: "Are you sure?" },
+                      class: "card-link"
+  .float-right
+    = pluralize(@problem.views.count, "view")
 
 .mb-4 = render "comments/comments", comments: @comments
