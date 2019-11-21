@@ -8,6 +8,7 @@ class ProblemsController < ApplicationController
 
   def show
     @comments = @problem.comments.order(:created_at)
+    View::Create.call(user: current_user, problem: @problem)
   end
 
   def new
