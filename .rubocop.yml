@@ -2,6 +2,8 @@ inherit_mode:
   merge:
     - Exclude
 
+require: rubocop-rspec
+
 AllCops:
   Exclude:
     - 'bin/**/*'
@@ -33,6 +35,7 @@ Metrics/BlockLength:
   Exclude:
     - 'config/environments/development.rb'
     - 'config/initializers/simple_form_bootstrap.rb'
+    - 'spec/**/*.rb'
 
 Metrics/LineLength:
   Exclude:
@@ -60,3 +63,6 @@ Style/StringLiterals:
     - 'config/initializers/simple_form.rb'
     - 'config/initializers/simple_form_bootstrap.rb'
   EnforcedStyle: double_quotes
+
+RSpec/MultipleExpectations:
+  Enabled: false
