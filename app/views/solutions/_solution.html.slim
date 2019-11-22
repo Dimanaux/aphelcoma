@@ -1,9 +1,11 @@
 .problem.card.float-left
   .card-body
+    p.card-title
+      = link_to "by #{solution.user.username}", solution.user
     p.card-text
       pre = solution.code
     - if policy(solution).destroy?
       = link_to "Destroy", problem_solution_path(solution.problem, solution),
                       method: :delete,
                       data: { confirm: "Are you sure?" },
-                      class: "card-link"
+                      class: "btn btn-danger"
