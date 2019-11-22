@@ -6,6 +6,24 @@
       = f.input :code,
                       as: :text,
                       input_html: { rows: 10, class: "text-monospace" }
+  .custom-file.mb-4
+    input.custom-file-input#codeFileInput onchange="loadFile();" type="file"
+    label.custom-file-label for="codeFileInput" Or choose a file
   .form-actions
     .float-right
       = f.button :submit, class: "btn btn-success"
+
+javascript:
+  function loadFile() {
+    let reader = new FileReader();
+    reader.onload = (e) => setSolutionCode(reader.result);
+    reader.readAsText(codeFile());
+  }
+
+  function setSolutionCode(code) {
+    document.getElementById("solution_code").value = code;
+  }
+
+  function codeFile() {
+    return document.getElementById("codeFileInput").files[0];
+  }
