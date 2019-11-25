@@ -3,7 +3,7 @@ p.small
   = "published on #{@problem.created_at.strftime('%F')} by "
   = link_to @problem.user.username, @problem.user
 p
-  = render "layouts/markdown", text: @problem.description, cached: true
+  = render "layouts/markdown", object: @problem, cached: true
 
 .clearfix
   .float-left
@@ -18,10 +18,10 @@ p
                       class: "card-link"
   .float-right
     - if policy(@problem.solutions).index?
-      => link_to "Solutions", problem_solutions_path(@problem.id)
+      => link_to "Solutions", solutions_path(@problem)
     - if policy(:solution).new?
       => link_to "Create Solution",
-                      new_problem_solution_path(@problem.id),
+                      new_solution_path(@problem),
                       class: "btn btn-outline-success"
 
 .container.mb-4 = render "comments/comments", comments: @comments
