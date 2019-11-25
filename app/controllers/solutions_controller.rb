@@ -15,8 +15,6 @@ class SolutionsController < ApplicationController
     authorize @solution
   end
 
-  def edit; end
-
   def create
     @solution = Solution.new solution_params.merge(user_id: current_user.id, problem_id: @problem.id)
 
