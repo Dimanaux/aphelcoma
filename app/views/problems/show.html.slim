@@ -20,7 +20,7 @@ p
     - if policy(@problem.solutions).index?
       => link_to "Solutions", problem_solutions_path(@problem.id)
     - if policy(:solution).new?
-      => link_to "Upload solution!",
+      => link_to "Create Solution",
                       new_problem_solution_path(@problem.id),
                       class: "btn btn-outline-success"
 
