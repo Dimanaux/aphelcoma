@@ -6,7 +6,7 @@
       pre onclick="visit('#{problem_solution_path(solution.problem, solution)}');"
         = solution.code
     - if policy(solution).destroy?
-      = link_to "Destroy", problem_solution_path(solution.problem, solution),
+      = link_to "Destroy", solution,
                       method: :delete,
                       data: { confirm: "Are you sure?" },
                       class: "btn btn-danger"
