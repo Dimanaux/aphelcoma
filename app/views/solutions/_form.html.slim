@@ -21,9 +21,11 @@ javascript:
   }
 
   function setSolutionCode(code) {
-    document.getElementById("solution_code").value = code;
+    const solutionTextInput = document.getElementById("solution_code");
+    solutionTextInput.value = code;
   }
 
   function codeFile() {
-    return document.getElementById("codeFileInput").files[0];
+    const solutionFileInput = document.getElementById("codeFileInput");
+    return solutionFileInput.files[0];
   }

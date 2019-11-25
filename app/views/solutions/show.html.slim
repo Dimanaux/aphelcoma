@@ -1,17 +1,11 @@
-p#notice
-  = notice
 p
   strong
-    | User:
-  = @solution.user_id
+    | For
+    i =< @solution.problem.title
 p
   strong
-    | Problem:
-  = @solution.problem_id
+    | by
+    =< @solution.user.username
 p
-  strong
-    | Code:
-  = @solution.code
-= link_to 'Edit', edit_solution_path(@solution)
-|  | 
-= link_to 'Back', solutions_path
+  pre = @solution.code
+= link_to "Back", problem_solutions_path(@solution.problem)
