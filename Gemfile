@@ -13,6 +13,7 @@ gem "kaminari"
 gem "pundit"
 
 # views
+gem "draper"
 gem "redcarpet"
 gem "simple_form"
 gem "slim"
