@@ -32,6 +32,7 @@ end
 group :development do
   gem "listen", ">= 3.0.5", "< 3.2"
   gem "rubocop"
+  gem "rubocop-rspec"
   gem "slim_lint"
   gem "spring"
   gem "spring-watcher-listen", "~> 2.0.0"
@@ -40,6 +41,10 @@ end
 
 group :test do
   gem "capybara", ">= 2.15"
-  gem "selenium-webdriver"
-  gem "webdrivers"
+  gem "capybara-selenium"
+  gem "factory_bot_rails"
+  gem "ffaker"
+  gem "rspec-rails", "~> 3.9.0"
+  gem "shoulda-matchers"
+  gem "simplecov"
 end

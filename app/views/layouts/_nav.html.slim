@@ -11,7 +11,7 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light
       li.nav-item
         span.navbar-text = "/"
       li.nav-item
-        = link_to "Sign out", destroy_user_session_path, method: :delete, class: "nav-link"
+        = link_to "Log out", destroy_user_session_path, method: :delete, class: "nav-link"
     - else
       li.nav-item
         = link_to "Log in", new_user_session_path, class: "nav-link"
