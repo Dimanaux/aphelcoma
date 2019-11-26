@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
   def edit; end
 
   def create
-    context = Comment::Create.call comment_params.merge(user: current_user, problem: @problem)
+    context = Comments::Create.call comment_params.merge(user: current_user, problem: @problem)
     @comment = context.comment
     respond_with @comment, location: -> { problem_path(@problem) }
   end
