@@ -23,4 +23,10 @@ describe Solution do
     expect(page).to have_content "Solution was successfully created"
     expect(page).to have_content solution.code
   end
+
+  it "must have code" do
+    visit new_problem_solution_path(problem)
+    click_button "Create Solution"
+    expect(page).to have_content "Code can't be blank"
+  end
 end
