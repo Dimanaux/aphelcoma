@@ -14,13 +14,19 @@ describe Solution do
     click_button "Create Solution"
   end
 
-  # it "user can't see solutions before submitting his one" do
-  #   visit problem_path(problem)
-  #   expect(page).not_to have_content "Solutions"
+  it "user can't see solutions before submitting his one" do
+    visit problem_path(problem)
+    expect(page).not_to have_content "Solutions"
 
-  #   visit problem_solutions_path(problem)
-  #   expect(page).not_to have_content solution.code
-  # end
+    visit problem_solutions_path(problem)
+    expect(page).not_to have_content solution.code
+    expect(page).to have_content "You are not allowed to perform this action"
+  end
+
+  it "user can't visit any solution directly before submitting his one" do
+    visit problem_solution_path(solution.problem_id, solution)
+    expect(page).to have_content "You are not allowed to perform this action"
+  end
 
   it "user can see other's solutions after submitting his one" do
     upload_solution(my_solution)
