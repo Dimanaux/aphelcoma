@@ -1,6 +1,6 @@
 module SolutionsHelper
   def solution_path(solution)
-    problem_solution_path(solution.problem, solution)
+    problem_solution_path(solution.problem_id, solution)
   end
 
   def solutions_path(problem)

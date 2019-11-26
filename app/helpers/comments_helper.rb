@@ -1,10 +1,10 @@
 module CommentsHelper
   def comment_path(comment)
-    problem_comment_path(comment.problem, comment)
+    problem_comment_path(comment.problem_id, comment)
   end
 
   def edit_comment_path(comment)
-    edit_problem_comment_path(comment.problem, comment)
+    edit_problem_comment_path(comment.problem_id, comment)
   end
 
   def comments_path(problem)
