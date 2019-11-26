@@ -25,17 +25,9 @@ class SolutionsController < ApplicationController
     end
   end
 
-  def update
-    if @solution.update(solution_params)
-      redirect_to problem_solutions_url(@problem.id), notice: "Solution was successfully updated."
-    else
-      render :edit
-    end
-  end
-
   def destroy
     @solution.destroy
-    redirect_to problem_solutions_url(@problem.id), notice: "Solution was successfully destroyed."
+    redirect_to @problem, notice: "Solution was successfully destroyed."
   end
 
   private

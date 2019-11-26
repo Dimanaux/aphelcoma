@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   resources :problems do
     resources :comments, only: %I[create edit update destroy]
-    resources :solutions
+    resources :solutions, only: %I[index show new create destroy]
   end
 
   root to: "problems#index"
