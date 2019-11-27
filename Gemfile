@@ -9,12 +9,15 @@ gem "rails", "~> 6.0.0"
 gem "activerecord-session_store"
 gem "devise"
 gem "interactor"
-gem "kaminari"
 gem "omniauth-google-oauth2"
 gem "pundit"
+
+# controllers
+gem "decent_exposure"
 gem "responders"
 
 # views
+gem "kaminari"
 gem "redcarpet"
 gem "simple_form"
 gem "slim"
