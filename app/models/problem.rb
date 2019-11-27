@@ -9,4 +9,5 @@ class Problem < ApplicationRecord
 
   has_many :comments, dependent: :destroy
   has_many :solutions, dependent: :destroy
+  has_many :views, dependent: :destroy
 end

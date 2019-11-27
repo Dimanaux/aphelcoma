@@ -87,6 +87,8 @@ GEM
     childprocess (3.0.0)
     concurrent-ruby (1.1.5)
     crass (1.0.5)
+    decent_exposure (3.0.2)
+      activesupport (>= 4.0)
     devise (4.7.1)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -120,6 +122,7 @@ GEM
     hashie (3.6.0)
     i18n (1.7.0)
       concurrent-ruby (~> 1.0)
+    interactor (3.1.1)
     jaro_winkler (1.5.4)
     json (2.2.0)
     jwt (2.2.1)
@@ -330,11 +333,13 @@ DEPENDENCIES
   byebug
   capybara (>= 2.15)
   capybara-selenium
+  decent_exposure
   devise
   dotenv-rails
   draper
   factory_bot_rails
   ffaker
+  interactor
   kaminari
   listen (>= 3.0.5, < 3.2)
   omniauth-google-oauth2
@@ -343,6 +348,7 @@ DEPENDENCIES
   pundit
   rails (~> 6.0.0)
   redcarpet
+  responders
   rspec-rails (~> 3.9.0)
   rubocop
   rubocop-rspec
