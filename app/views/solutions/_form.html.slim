@@ -7,7 +7,7 @@
                       as: :text,
                       input_html: { rows: 10, class: "text-monospace" }
   .custom-file.mb-4
-    input.custom-file-input#codeFileInput onchange="loadFile();" type="file"
+    input.custom-file-input#codeFileInput type="file"
     label.custom-file-label for="codeFileInput" Or choose a file
   .form-actions
     .float-right
@@ -29,3 +29,6 @@ javascript:
     const solutionFileInput = document.getElementById("codeFileInput");
     return solutionFileInput.files[0];
   }
+
+  const fileInput = document.getElementById('codeFileInput');
+  fileInput.addEventListener('change', loadFile);
