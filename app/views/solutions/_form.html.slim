@@ -13,22 +13,4 @@
     .float-right
       = f.button :submit, class: "btn btn-success"
 
-javascript:
-  function loadFile() {
-    let reader = new FileReader();
-    reader.onload = (e) => setSolutionCode(reader.result);
-    reader.readAsText(codeFile());
-  }
-
-  function setSolutionCode(code) {
-    const solutionTextInput = document.getElementById("solution_code");
-    solutionTextInput.value = code;
-  }
-
-  function codeFile() {
-    const solutionFileInput = document.getElementById("codeFileInput");
-    return solutionFileInput.files[0];
-  }
-
-  const fileInput = document.getElementById('codeFileInput');
-  fileInput.addEventListener('change', loadFile);
+= javascript_pack_tag "solutions"
