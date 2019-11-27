@@ -14,6 +14,7 @@ module Comments
     def call
       @comment.save
       context.comment = @comment
+      context.fail! unless @comment.persisted?
     end
 
     def action_name

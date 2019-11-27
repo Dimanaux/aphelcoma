@@ -15,11 +15,11 @@ p
                       data: { confirm: "Are you sure?" },
                       class: "card-link"
   .float-right
-    - if policy(@problem.solutions).index?
-      => link_to "Solutions", solutions_path(@problem)
+    - if policy(problem.solutions).index?
+      => link_to "Solutions", solutions_path(problem)
     - if policy(:solution).new?
       => link_to "Create Solution",
-                      new_solution_path(@problem),
+                      new_solution_path(problem),
                       class: "btn btn-outline-success"
     = pluralize(problem.views.count, "view")
 
