@@ -3,15 +3,15 @@
     p.card-title
       = link_to "by #{solution.user.username}", solution.user
     p.card-text
-      pre onclick="visit('#{problem_solution_path(solution.problem, solution)}');"
+      pre
         = solution.code
-    - if policy(solution).destroy?
-      = link_to "Destroy", solution,
-                      method: :delete,
-                      data: { confirm: "Are you sure?" },
-                      class: "btn btn-danger"
-
-javascript:
-  function visit(link) {
-    window.location.replace(link);
-  }
+    .clearfix
+      .float-left
+        - if policy(solution).show?
+          => link_to "View", solution, class: "btn btn-link"
+      .float-right
+        - if policy(solution).destroy?
+          =< link_to "Destroy", solution,
+                          method: :delete,
+                          data: { confirm: "Are you sure?" },
+                          class: "btn btn-danger"
