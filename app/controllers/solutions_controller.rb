@@ -4,7 +4,7 @@ class SolutionsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @solutions = Solution.where("problem_id = ?", @problem.id)
+    @solutions = @problem.solutions
     authorize @solutions
   end
 
