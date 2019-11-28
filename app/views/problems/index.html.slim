@@ -5,4 +5,5 @@ h1
 
 = paginate @problems
 br
-= link_to "New Problem", new_problem_path
+- if policy(:problem).new?
+  = link_to "New Problem", new_problem_path

@@ -6,8 +6,11 @@ ruby "2.6.5"
 gem "rails", "~> 6.0.0"
 
 # main
+gem "activerecord-session_store"
 gem "devise"
+gem "omniauth-google-oauth2"
 gem "kaminari"
+gem "pundit"
 
 # views
 gem "redcarpet"
