@@ -28,7 +28,7 @@ class CommentsController < ApplicationController
   private
 
   def problem_location
-    { location: -> { problem_path(problem) } }
+    { location: -> { problem_path(comment.problem_id || problem.id) } }
   end
 
   def authorize_comment
