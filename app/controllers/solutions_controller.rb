@@ -1,47 +1,37 @@
 class SolutionsController < ApplicationController
-  before_action :set_problem, only: %I[index new create destroy]
-  before_action :set_solution, only: %I[show edit update destroy]
+  expose :problem, id: :problem_id
+  expose :solution
+  expose :solutions, from: :problem
+  before_action :authorize_solution, only: %I[show edit update destroy]
   before_action :authenticate_user!
 
   def index
-    @solutions = @problem.solutions
-    authorize @solutions
+    authorize solutions
   end
 
   def show; end
 
-  def new
-    @solution = Solution.new
-    authorize @solution
-  end
+  def new; end
 
   def create
-    @solution = Solution.new solution_params.merge(user_id: current_user.id, problem_id: @problem.id)
-
-    if @solution.save
-      redirect_to problem_solutions_url(@problem.id), notice: "Solution was successfully created."
-    else
-      render :new
-    end
+    solution.user = current_user
+    solution.problem = problem
+    solution.save
+    respond_with solution
   end
 
   def destroy
-    @solution.destroy
-    redirect_to @problem, notice: "Solution was successfully destroyed."
+    solution.destroy
+    respond_with solution, location: -> { problem_path(solution.problem_id) }
   end
 
   private
 
-  def set_solution
-    @solution = Solution.find(params[:id])
-    authorize @solution
+  def authorize_solution
+    authorize solution
   end
 
   def solution_params
     params.require(:solution).permit(:code)
-  end
-
-  def set_problem
-    @problem = Problem.find(params[:problem_id])
   end
 end

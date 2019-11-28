@@ -1,11 +1,11 @@
 p
   strong
     | For
-    i =< @solution.problem.title
+    i =< solution.problem.title
 p
   strong
     | by
-    =< @solution.user.username
+    =< solution.user.username
 p
-  pre = @solution.code
-= link_to "Back", solutions_path(@solution.problem)
+  pre = solution.code
+= link_to "Back", solutions_path(solution.problem_id)

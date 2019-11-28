@@ -1,12 +1,12 @@
 h1
   | Solutions for
-  i =< @problem.title
+  i =< problem.title
 
 .clearfix.mt-4
-  = render @solutions
+  = render solutions
 
 .clearfix
   .float-left
-    = link_to "Back", @problem
+    = link_to "Back", problem
   .float-right
-    = link_to "New Solution", new_solution_path(@problem), class: "btn btn-outline-primary"
+    = link_to "New Solution", new_solution_path(problem), class: "btn btn-outline-primary"
