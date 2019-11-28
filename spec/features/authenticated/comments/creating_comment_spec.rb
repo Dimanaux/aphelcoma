@@ -12,7 +12,7 @@ describe Comment do
     click_button "Create Comment"
   end
 
-  it "creates comment" do
+  it "can be created" do
     create_comment comment
     expect(page).to have_content "Comment was successfully created."
     expect(page).to have_content comment.text

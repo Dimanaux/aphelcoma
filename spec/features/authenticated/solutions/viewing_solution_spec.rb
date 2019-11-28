@@ -24,7 +24,7 @@ describe Solution do
   end
 
   it "user can't visit any solution directly before submitting his one" do
-    visit problem_solution_path(solution.problem_id, solution)
+    visit solution_path(solution)
     expect(page).to have_content "You are not allowed to perform this action"
   end
 
