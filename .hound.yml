@@ -1,2 +1,3 @@
 ruby:
   config_file: .rubocop.yml
+  TargetRubyVersion: 2.5
