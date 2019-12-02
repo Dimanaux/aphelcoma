@@ -1,2 +1,3 @@
-- flash.each do |key, value|
-  = content_tag :div, value, class: "flash #{key} alert-danger", role: "alert"
+.mt-4
+  - flash.each do |key, value|
+    = content_tag :div, value, class: "flash #{key} alert-danger", role: "alert"

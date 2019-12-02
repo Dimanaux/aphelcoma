@@ -8,11 +8,17 @@ gem "rails", "~> 6.0.0"
 # main
 gem "activerecord-session_store"
 gem "devise"
+gem "interactor"
 gem "omniauth-google-oauth2"
-gem "kaminari"
 gem "pundit"
 
+# controllers
+gem "decent_exposure"
+gem "responders"
+
 # views
+gem "draper"
+gem "kaminari"
 gem "redcarpet"
 gem "simple_form"
 gem "slim"

@@ -9,5 +9,7 @@ describe User do
   context "with associations" do
     it { is_expected.to have_many :problems }
     it { is_expected.to have_many :comments }
+    it { is_expected.to have_many :solutions }
+    it { is_expected.to have_many :views }
   end
 end

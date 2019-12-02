@@ -4,4 +4,4 @@
     = render comments
   - if policy(:comment).new?
     .mt-2
-      = render "comments/new_form", comment: current_user.comments.new(problem_id: @problem.id)
+      = render "comments/new_form", comment: current_user.comments.new(problem: problem)
