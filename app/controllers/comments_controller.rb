@@ -6,10 +6,9 @@ class CommentsController < ApplicationController
   def edit; end
 
   def create
-    context = Comments::Create.call comment_params.merge(user: current_user, problem: problem)
-    comment = context.comment
-    if context.success?
-      respond_with comment, problem_location
+    result = Comments::Create.call comment_params.merge(user: current_user, problem: problem)
+    if result.success?
+      respond_with result.comment, problem_location
     else
       redirect_to problem, alert: "Text can't be blank."
     end

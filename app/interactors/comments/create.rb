@@ -7,14 +7,9 @@ module Comments
       @comment = Comment.new context.to_h
     end
 
-    before do
-      authorize @comment
-    end
-
     def call
-      @comment.save
       context.comment = @comment
-      context.fail! unless @comment.persisted?
+      context.fail! unless @comment.save
     end
 
     def action_name
