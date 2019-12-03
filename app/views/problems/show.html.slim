@@ -1,18 +1,27 @@
-h2 = @problem.title
+h2 = problem.title
 p.small
-  = "published on #{@problem.created_at.strftime('%F')} by "
-  = link_to @problem.user.username, @problem.user
+  = "published on #{problem.created_at.strftime('%F')} by "
+  = link_to problem.user.username, problem.user
 p
-  = render "layouts/markdown", text: @problem.description, cached: true
+  = render "layouts/markdown", object: problem, cached: true
+.clearfix
+  .float-left
+    = link_to "Back", problems_path, class: "card-link"
+    - if policy(problem).edit?
+      = link_to "Edit", edit_problem_path(problem), class: "card-link"
+    - if policy(problem).destroy?
+      = link_to "Destroy", problem,
+                      method: :delete,
+                      data: { confirm: "Are you sure?" },
+                      class: "card-link"
+  .float-right
+    - if policy(problem.solutions).index?
+      => link_to "Solutions", solutions_path(problem)
+    - if policy(:solution).new?
+      => link_to "Create Solution",
+                      new_solution_path(problem),
+                      class: "btn btn-outline-success"
+    = pluralize(problem.views.count, "view")
 
-= link_to "Back", problems_path, class: "card-link"
-- if policy(@problem).edit?
-  = link_to "Edit", edit_problem_path(@problem), class: "card-link"
-- if policy(@problem).destroy?
-  = link_to "Destroy",
-                  @problem,
-                  method: :delete,
-                  data: { confirm: "Are you sure?" },
-                  class: "card-link"
-
-.mb-4 = render "comments/comments", comments: @comments
+.mb-4
+  = render "comments/comments", comments: problem.comments.order(:created_at), problem: problem
