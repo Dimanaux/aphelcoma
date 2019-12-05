@@ -2,6 +2,8 @@ inherit_mode:
   merge:
     - Exclude
 
+require: rubocop-rspec
+
 AllCops:
   Exclude:
     - 'bin/**/*'
@@ -12,7 +14,6 @@ AllCops:
     - 'config/**/*.rb'
     - 'lib/**/*.rb'
     - 'spec/**/*.rb'
-  TargetRubyVersion: 2.6
 
 Layout/AlignHash:
   Enabled: false
@@ -33,6 +34,7 @@ Metrics/BlockLength:
   Exclude:
     - 'config/environments/development.rb'
     - 'config/initializers/simple_form_bootstrap.rb'
+    - 'spec/**/*.rb'
 
 Metrics/LineLength:
   Exclude:
@@ -60,3 +62,6 @@ Style/StringLiterals:
     - 'config/initializers/simple_form.rb'
     - 'config/initializers/simple_form_bootstrap.rb'
   EnforcedStyle: double_quotes
+
+RSpec/MultipleExpectations:
+  Enabled: false

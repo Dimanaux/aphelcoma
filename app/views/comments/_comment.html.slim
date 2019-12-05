@@ -1,20 +1,19 @@
 .card.mb-3
   .card-body
-    p.card-text = render "layouts/markdown", text: comment.text, cached: true
+    p.card-text = render "layouts/markdown", object: comment, cached: true
     .row
       .col
         p.card-text
           small.text-muted
-            = "by "
-            = link_to comment.user.email, comment.user
-            = " at "
-            = comment.created_at.strftime "%F"
+            | by
+            =<> link_to comment.user.email, comment.user
+            | at
+            =< comment.created_at.strftime "%F"
       .col
         - if policy(comment).edit?
-          = link_to "Edit", edit_problem_comment_path(comment.problem, comment), class: "card-link"
+          = link_to "Edit", edit_comment_path(comment), class: "card-link"
         - if policy(comment).destroy?
-          = link_to "Destroy",
-                          problem_comment_path(comment.problem, comment),
+          = link_to "Destroy", comment,
                           method: :delete,
                           data: { confirm: "Are you sure?" },
                           class: "card-link"

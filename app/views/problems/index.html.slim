@@ -4,6 +4,6 @@ h1
 .container.clearfix = render @problems
 
 = paginate @problems
-br
-- if policy(:problem).new?
-  = link_to "New Problem", new_problem_path
+.clearfix
+  - if policy(:problem).new?
+    .float-right = link_to "New Problem", new_problem_path, class: "btn btn-outline-primary"
