@@ -4,7 +4,7 @@
 
 A place where you can find programming problems, solve and discuss them.
 
-Deployed with Heroku: [aphelcoma.herokuapp.com](https://aphelcoma.herokuapp.com/)
+Deployed (from branch heroku) with Heroku: [aphelcoma.herokuapp.com](https://aphelcoma.herokuapp.com/)
 
 * Ruby version: ~> 2.6.5
 
