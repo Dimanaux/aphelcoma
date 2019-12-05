@@ -1,11 +1,10 @@
-h1
-  | Editing Comment
+h1 Editing Comment
 
 .clearfix
-  = render @comment.problem
+  = render comment.problem
 
 .mt-4
-  = render "comments/edit_form", comment: @comment
+  = render "comments/edit_form", comment: comment
 
 .mt-4
-  = link_to "Back", @comment.problem
+  = link_to "Back", comment.problem

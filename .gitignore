@@ -34,3 +34,6 @@ yarn-debug.log*
 /.env
 /config/application.yml
 /config/local_env.yml
+
+# simplecov reports
+/coverage/

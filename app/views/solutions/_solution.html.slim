@@ -1,0 +1,17 @@
+.problem.card.float-left
+  .card-body
+    p.card-title
+      = link_to "by #{solution.user.username}", solution.user
+    p.card-text
+      pre
+        = solution.code
+    .clearfix
+      .float-left
+        - if policy(solution).show?
+          => link_to "View", solution, class: "btn btn-link"
+      .float-right
+        - if policy(solution).destroy?
+          =< link_to "Destroy", solution,
+                          method: :delete,
+                          data: { confirm: "Are you sure?" },
+                          class: "btn btn-danger"

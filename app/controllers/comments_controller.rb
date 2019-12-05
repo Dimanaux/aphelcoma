@@ -1,42 +1,37 @@
 class CommentsController < ApplicationController
-  before_action :set_problem
-  before_action :set_comment, only: %I[edit update destroy]
+  expose :problem, id: :problem_id
+  expose :comment
+  before_action :authorize_comment, only: %I[update destroy]
 
   def edit; end
 
   def create
-    @comment = Comment.new comment_params.merge(user_id: current_user.id, problem_id: @problem.id)
-    authorize @comment
-
-    if @comment.save
-      redirect_to @problem, notice: "Comment was successfully created."
+    result = Comments::Create.call comment_params.merge(user: current_user, problem: problem)
+    if result.success?
+      respond_with result.comment, problem_location
     else
-      redirect_to @problem
+      redirect_to problem, alert: "Text can't be blank."
     end
   end
 
   def update
-    if @comment.update(comment_params)
-      redirect_to @problem, notice: "Comment was successfully updated."
-    else
-      redirect_to @problem
-    end
+    comment.update(comment_params)
+    respond_with comment, problem_location
   end
 
   def destroy
-    @comment.destroy
-    redirect_to @problem, notice: "Comment was successfully destroyed."
+    comment.destroy
+    respond_with comment, problem_location
   end
 
   private
 
-  def set_problem
-    @problem = Problem.find(params[:problem_id])
+  def problem_location
+    { location: -> { problem_path(comment.problem_id || problem.id) } }
   end
 
-  def set_comment
-    @comment = Comment.find(params[:id])
-    authorize @comment
+  def authorize_comment
+    authorize comment
   end
 
   def comment_params
