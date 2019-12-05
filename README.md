@@ -16,7 +16,9 @@ Deployed (from branch heroku) with Heroku: [aphelcoma.herokuapp.com](https://aph
 
 * Database initialization:
 
-* How to run the test suite: run `bin/spec` script.
+* How to run the test suite:
+- run `bundle exec rake db:test:prepare`
+- run `bin/spec` script.
 
 * Deployment instructions:
 - create file .env if you want mailing, see `.env.example` for example for local development.
