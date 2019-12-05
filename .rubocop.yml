@@ -32,8 +32,7 @@ Lint/UnusedBlockArgument:
 
 Metrics/BlockLength:
   Exclude:
-    - 'config/environments/development.rb'
-    - 'config/initializers/simple_form_bootstrap.rb'
+    - 'config/**/*.rb'
     - 'spec/**/*.rb'
 
 Metrics/LineLength:
