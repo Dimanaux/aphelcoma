@@ -3,12 +3,11 @@ module Comments
     include Interactor
 
     before do
-      @comment = Comment.new context.to_h
+      context.comment = Comment.new(context.to_h)
     end
 
     def call
-      context.comment = @comment
-      context.fail! unless @comment.save
+      context.fail!(error: t("errors.messages.text.blank")) unless context.comment.save
     end
   end
 end
