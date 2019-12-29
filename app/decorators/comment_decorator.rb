@@ -1,5 +1,14 @@
 class CommentDecorator < ApplicationDecorator
-  delegate :text
+  delegate :html, to: :decorated_text, prefix: :text
+  delegate :author_link, to: :decorated_user
 
-  include HasMarkdown
+  private
+
+  def decorated_text
+    @decorated_text ||= TextDecorator.new(object.text)
+  end
+
+  def decorated_user
+    @decorated_user ||= UserDecorator.new(object.user)
+  end
 end
