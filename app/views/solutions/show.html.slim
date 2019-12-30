@@ -1,11 +1,13 @@
+- decorated_solution = solution.decorate
+
 p
   strong
     | For
-    i =< solution.problem.title
+    i =< decorated_solution.problem_title
 p
   strong
     | by
-    =< solution.user.username
+    =< decorated_solution.author_name
 p
   pre = solution.code
 = link_to t("common.back"), solutions_path(solution.problem_id)

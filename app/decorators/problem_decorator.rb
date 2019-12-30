@@ -1,6 +1,7 @@
 class ProblemDecorator < ApplicationDecorator
-  delegate :html, to: :decorated_description, prefix: :text
   delegate :link, to: :decorated_user, prefix: :author
+  delegate :html, to: :decorated_description, prefix: :text
+  delegate :title
 
   def preview
     object.description.lines.first
@@ -21,7 +22,7 @@ class ProblemDecorator < ApplicationDecorator
   private
 
   def decorated_creation_date
-    @creation_date ||= DateDecorator.new(object.created_at)
+    @decorated_creation_date ||= DateDecorator.new(object.created_at)
   end
 
   def decorated_description

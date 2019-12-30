@@ -1,6 +1,6 @@
 class CommentDecorator < ApplicationDecorator
-  delegate :html, to: :decorated_text, prefix: :text
   delegate :link, to: :decorated_user, prefix: :author
+  delegate :html, to: :decorated_text, prefix: :text
 
   def created_at
     decorated_creation_date.to_s
@@ -9,7 +9,7 @@ class CommentDecorator < ApplicationDecorator
   private
 
   def decorated_creation_date
-    @creation_date ||= DateDecorator.new(object.created_at)
+    @decorated_creation_date ||= DateDecorator.new(object.created_at)
   end
 
   def decorated_text
