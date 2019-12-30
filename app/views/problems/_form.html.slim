@@ -2,7 +2,7 @@
   - if problem.errors.any?
     #error_explanation
       h2
-        = pluralize(problem.errors.count, "error")
+        = pluralize(problem.errors.count, t("common.error"))
         |  prohibited this problem from being saved:
       ul
         - problem.errors.full_messages.each do |message|
@@ -12,7 +12,7 @@
   .field
     = form.input :description,
                       as: :text,
-                      label: "Description (markdown supported)",
+                      label: t("problems.labels.description"),
                       input_html: { rows: 10, class: "text-monospace" }
   .actions
     = form.button :submit, class: "btn btn-primary"

@@ -1,19 +1,21 @@
+- decorated_comment = comment.decorate
+
 .card.mb-3
   .card-body
-    p.card-text = render "layouts/markdown", object: comment, cached: true
+    p.card-text = render "layouts/markdown", html: decorated_comment.text_html, cached: true
     .row
       .col
         p.card-text
           small.text-muted
             | by
-            =<> link_to comment.user.email, comment.user
+            =<> decorated_comment.author_link
             | at
-            =< comment.created_at.strftime "%F"
+            =< decorated_comment.created_at
       .col
         - if policy(comment).edit?
-          = link_to "Edit", edit_comment_path(comment), class: "card-link"
+          = link_to t("common.edit"), edit_comment_path(comment), class: "card-link"
         - if policy(comment).destroy?
-          = link_to "Destroy", comment,
+          = link_to t("common.destroy"), comment,
                           method: :delete,
-                          data: { confirm: "Are you sure?" },
+                          data: { confirm: t("common.confirmation") },
                           class: "card-link"

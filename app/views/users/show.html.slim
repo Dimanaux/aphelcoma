@@ -1,6 +1,6 @@
 .row
   h1 = @user.username
   - if @user == current_user
-    = link_to "Edit my account", edit_user_registration_url, class: "small"
+    = link_to t("users.actions.edit"), edit_user_registration_url, class: "small"
 
 = render @user.problems

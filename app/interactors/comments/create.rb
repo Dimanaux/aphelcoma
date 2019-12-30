@@ -7,7 +7,7 @@ module Comments
     end
 
     def call
-      context.fail!(error: t("errors.messages.text.blank")) unless context.comment.save
+      context.fail!(error: I18n.t("errors.messages.text.blank")) unless context.comment.save
     end
   end
 end

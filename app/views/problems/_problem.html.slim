@@ -1,12 +1,18 @@
+- decorated_problem = problem.decorate
+
 .problem.card.float-left
   .card-body
     h5.card-title = problem.title
     h6.card-subtitle.mb-2.text-muted
-      = link_to "by #{problem.user.username}", problem.user
-    p.card-text.text-truncate = problem.description.lines.first
-    = link_to "Show", problem, class: "card-link"
+      = decorated_problem.author_link
+    p.card-text.text-truncate = decorated_problem.preview
+    = link_to t("common.show"), problem, class: "card-link"
     - if policy(problem).edit?
-      = link_to "Edit", edit_problem_path(problem), class: "card-link"
+      = link_to t("common.edit"), edit_problem_path(problem), class: "card-link"
     - if policy(problem).destroy?
-      = link_to "Destroy", problem, method: :delete, data: { confirm: "Are you sure?" }, class: "card-link"
-    .float-right = "👁 #{problem.views.count}"
+      = link_to t("common.destroy"),
+                      problem,
+                      method: :delete,
+                      data: { confirm: t("common.confirmation") },
+                      class: "card-link"
+    .float-right = "👁 #{decorated_problem.views_count}"

@@ -1,3 +1,5 @@
+- decorated_user = user.decorate
+
 .card
   .card-body
-    = link_to user.username, user, class: "card-link"
+    = decorated_user.link

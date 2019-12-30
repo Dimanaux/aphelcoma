@@ -1,6 +1,48 @@
 en:
+  common:
+    back: "Back"
+    confirmation: "Are you sure?"
+    destroy: "Destroy"
+    edit: "Edit"
+    error: "Error"
+    published: "published on"
+    show: "Show"
   errors:
     messages:
       text:
-        blank:
-          "Text can't be blank."
+        blank: "Text can't be blank."
+  comments:
+    actions:
+      edit: "Editing comment"
+      new: "Have something to say?"
+    label:
+      plural: "Comments"
+      single: "Comment"
+  problems:
+    actions:
+      edit: "Editing problem"
+      new: "New problem"
+    label:
+      plural: "Problems"
+      single: "Problem"
+    labels:
+      description: "Description (markdown supported)"
+  solutions:
+    actions:
+      index: "Solutions for"
+      new: "Create Solution"
+      show: "Solution for"
+      upload: "Or choose a file"
+    label:
+      plural: "Solutions"
+      single: "Solution"
+  users:
+    actions:
+      edit: "Edit my account"
+    label:
+      plural: "Users"
+      single: "User"
+  views:
+    label:
+      plural: "Views"
+      single: "View"

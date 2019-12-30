@@ -1,8 +1,7 @@
-h1
-  | Editing Problem
+h1 = t("problems.actions.edit")
 
 = render "form", problem: problem
 
-= link_to "Show", problem
+= link_to t("common.show"), problem
 = " | "
-= link_to "Back", problems_path
+= link_to t("common.back"), problems_path
