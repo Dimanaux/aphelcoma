@@ -1,11 +1,11 @@
 class UserDecorator < ApplicationDecorator
   delegate :username
 
-  def author_link
-    helpers.link_to author_name, object.user
+  def link
+    helpers.link_to name, object
   end
 
-  def author_name
+  def name
     object.username
   end
 end
