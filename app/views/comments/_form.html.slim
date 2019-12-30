@@ -2,6 +2,6 @@
   = f.error_notification
   = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
   .form-inputs
-    = f.input :text, label: "Have something to say?"
+    = f.input :text, label: t("comments.actions.new")
   .form-actions
     = f.button :submit, class: "btn btn-primary"

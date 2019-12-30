@@ -1,27 +1,29 @@
+- decorated_problem = problem.decorate
+
 h2 = problem.title
 p.small
-  = "published on #{problem.created_at.strftime('%F')} by "
-  = link_to problem.user.username, problem.user
+  = "#{t('common.published')} #{decorated_problem.created_at}, "
+  = decorated_problem.author_link
 p
-  = render "layouts/markdown", object: problem, cached: true
+  = render "layouts/markdown", html: decorated_problem.text_html, cached: true
 .clearfix
   .float-left
-    = link_to "Back", problems_path, class: "card-link"
+    = link_to t("common.back"), problems_path, class: "card-link"
     - if policy(problem).edit?
-      = link_to "Edit", edit_problem_path(problem), class: "card-link"
+      = link_to t("common.edit"), edit_problem_path(problem), class: "card-link"
     - if policy(problem).destroy?
-      = link_to "Destroy", problem,
+      = link_to t("common.destroy"), problem,
                       method: :delete,
-                      data: { confirm: "Are you sure?" },
+                      data: { confirm: t("common.confirmation") },
                       class: "card-link"
   .float-right
     - if policy(problem.solutions).index?
-      => link_to "Solutions", solutions_path(problem)
+      => link_to t("solutions.label.single"), solutions_path(problem)
     - if policy(:solution).new?
-      => link_to "Create Solution",
+      => link_to t("solutions.actions.new"),
                       new_solution_path(problem),
                       class: "btn btn-outline-success"
-    = pluralize(problem.views.count, "view")
+    = pluralize(decorated_problem.views_count, t("views.label.single"))
 
 .mb-4
-  = render "comments/comments", comments: problem.comments.order(:created_at), problem: problem
+  = render "comments/comments", comments: decorated_problem.comments, problem: problem

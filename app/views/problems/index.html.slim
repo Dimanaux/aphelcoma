@@ -1,9 +1,8 @@
-h1
-  | Problems
+h1 = t("problems.label.plural")
 
 .container.clearfix = render @problems
 
 = paginate @problems
 .clearfix
   - if policy(:problem).new?
-    .float-right = link_to "New Problem", new_problem_path, class: "btn btn-outline-primary"
+    .float-right = link_to t("problems.actions.new"), new_problem_path, class: "btn btn-outline-primary"

@@ -1,17 +1,20 @@
+- decorated_solution = solution.decorate
+
 .problem.card.float-left
   .card-body
     p.card-title
-      = link_to "by #{solution.user.username}", solution.user
+      | by
+      = decorated_solution.author_link
     p.card-text
       pre
-        = solution.code
+        = decorated_solution.code
     .clearfix
       .float-left
         - if policy(solution).show?
-          => link_to "View", solution, class: "btn btn-link"
+          => link_to t("solutions.actions.show"), solution, class: "btn btn-link"
       .float-right
         - if policy(solution).destroy?
-          =< link_to "Destroy", solution,
+          =< link_to t("common.destroy"), solution,
                           method: :delete,
-                          data: { confirm: "Are you sure?" },
+                          data: { confirm: t("common.confirmation") },
                           class: "btn btn-danger"
