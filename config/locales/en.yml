@@ -1,33 +1,48 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# The following keys must be escaped otherwise they will not be retrieved by
-# the default I18n backend:
-#
-# true, false, on, off, yes, no
-#
-# Instead, surround them with single quotes.
-#
-# en:
-#   'true': 'foo'
-#
-# To learn more, please read the Rails Internationalization guide
-# available at https://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+  common:
+    back: "Back"
+    confirmation: "Are you sure?"
+    destroy: "Destroy"
+    edit: "Edit"
+    error: "Error"
+    published: "published on"
+    show: "Show"
+  errors:
+    messages:
+      text:
+        blank: "Text can't be blank."
+  comments:
+    actions:
+      edit: "Editing comment"
+      new: "Have something to say?"
+    label:
+      plural: "Comments"
+      single: "Comment"
+  problems:
+    actions:
+      edit: "Editing problem"
+      new: "New problem"
+    label:
+      plural: "Problems"
+      single: "Problem"
+    labels:
+      description: "Description (markdown supported)"
+  solutions:
+    actions:
+      index: "Solutions for"
+      new: "Create Solution"
+      show: "Solution for"
+      upload: "Or choose a file"
+    label:
+      plural: "Solutions"
+      single: "Solution"
+  users:
+    actions:
+      edit: "Edit my account"
+    label:
+      plural: "Users"
+      single: "User"
+  views:
+    label:
+      plural: "Views"
+      single: "View"

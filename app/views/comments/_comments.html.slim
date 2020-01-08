@@ -1,5 +1,5 @@
 .mt-2
-  h3 Comments
+  h3 = t("comments.label.plural")
   .container
     = render comments
   - if policy(:comment).new?

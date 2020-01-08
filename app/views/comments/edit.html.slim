@@ -1,4 +1,4 @@
-h1 Editing Comment
+h1 = t("comments.actions.edit")
 
 .clearfix
   = render comment.problem
@@ -7,4 +7,4 @@ h1 Editing Comment
   = render "comments/edit_form", comment: comment
 
 .mt-4
-  = link_to "Back", comment.problem
+  = link_to t("common.back"), comment.problem
